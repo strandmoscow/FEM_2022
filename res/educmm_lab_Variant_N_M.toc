@@ -1,0 +1,17 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{Метод конечных элементов}{3}{section*.2}%
+\contentsline {subsection}{\numberline {1}Цель выполнения лабораторной работы}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {2}Задание}{3}{subsection.0.2}%
+\contentsline {subsection}{\numberline {3}Аналитическое решение}{4}{subsection.0.3}%
+\contentsline {subsection}{\numberline {4}Получение локальных матрицы жесткости и вектора нагрузок}{4}{subsection.0.4}%
+\contentsline {subsubsection}{Линейная функция-формы КЭ}{4}{section*.4}%
+\contentsline {subsubsection}{Кубическая функция-формы КЭ}{5}{section*.5}%
+\contentsline {subsection}{\numberline {5}Получение глобальных матрицы жесткости и вектора нагрузок}{7}{subsection.0.5}%
+\contentsline {subsubsection}{Ансамблирование}{7}{section*.6}%
+\contentsline {subsubsection}{Учет граничных условий}{8}{section*.7}%
+\contentsline {subsection}{\numberline {6}Анализ результатов}{8}{subsection.0.6}%
+\contentsline {subsubsection}{Линейная функция-формы}{8}{section*.8}%
+\contentsline {subsubsection}{Кубическая функция-формы}{11}{section*.12}%
+\contentsline {subsubsection}{Нахождение количества линейных КЭ, обеспечивающих ту же точность, что и 20 кубических}{14}{section*.16}%
+\contentsline {subsection}{\numberline {7}Код}{14}{subsection.0.7}%
+\contentsline {subsection}{\numberline {8}Вывод}{20}{subsection.0.8}%
