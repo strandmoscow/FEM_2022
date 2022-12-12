@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  12 DEC 2022 20:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  12 DEC 2022 21:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1428,13 +1428,20 @@ Overfull \hbox (12.80959pt too wide) in paragraph at lines 65--71
 
  [2]
 (./labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex [3]
-<labs/img/img1.png, id=132, 799.98875pt x 607.26875pt>
+<labs/img/img1.png, id=132, 801.99625pt x 596.2275pt>
 File: labs/img/img1.png Graphic file (type png)
 <use labs/img/img1.png>
 Package pdftex.def Info: labs/img/img1.png  used on input line 41.
-(pdftex.def)             Requested size: 399.9934pt x 303.63364pt.
+(pdftex.def)             Requested size: 400.99713pt x 298.11302pt.
  [4 <./labs/img/img1.png>]
-[5] [6] [7]
+[5]
+Overfull \hbox (1.54083pt too wide) detected at line 236
+\U/MnSymbolD/m/n/12 ^^@ \OT1/cmr/m/n/12 17 [] []\OMX/MnSymbolE/m/n/12 S[] \U/Mn
+SymbolC/m/n/12 ^^P \OT1/cmr/m/n/12 17 [][] [] [] []\OT1/cmr/bx/n/12 u \U/MnSymb
+olD/m/n/12 ^^@
+ []
+
+[6] [7]
 <labs/img/lin/20.png, id=173, 462.528pt x 346.896pt>
 File: labs/img/lin/20.png Graphic file (type png)
 <use labs/img/lin/20.png>
@@ -1523,7 +1530,7 @@ Package rerunfilecheck Info: File `educmm_lab_Variant_N_M.out' has not changed.
 Here is how much of TeX's memory you used:
  35496 strings out of 478268
  663492 string characters out of 5846347
- 1188657 words of memory out of 5000000
+ 1189653 words of memory out of 5000000
  52641 multiletter control sequences out of 15000+600000
  509534 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1557,7 +1564,7 @@ lic/cm-super/sfss1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/publi
 c/cm-super/sfsx1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/
 cm-super/sfti1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm
 -super/sfti1200.pfb>
-Output written on educmm_lab_Variant_N_M.pdf (21 pages, 1241388 bytes).
+Output written on educmm_lab_Variant_N_M.pdf (21 pages, 1244908 bytes).
 PDF statistics:
  692 PDF objects out of 1000 (max. 8388607)
  612 compressed objects within 7 object streams

@@ -3,29 +3,29 @@ import numpy as np
 from jinja2 import Environment, FileSystemLoader
 import matplotlib.pyplot as plt
 
-author_name="{Василян Артур Размикович}"
-author_name_short="{Василян А.Р.}"
-group="{РК6-73б}"
-variant="{45}"
+author_name="{Зайковская Анастасия Владимировна}"
+author_name_short="{Зайковская А.В.}"
+group="{РК6-72б}"
+variant="{28}"
 
-a = 3.0
+a = 17.0
 b = -4.0
 c = 0.0
-d = 11.0
+d = 15.0
 
-min_int = 0.0
-min_cond_type = 0
-min_value = 4.0
+min_int = -3.0
+min_cond_type = 1
+min_value = 5.0
 
-max_int = 14.0
-max_cond_type = 1
-max_value = 8.0
+max_int = 8.0
+max_cond_type = 0
+max_value = 4.0
 
 # an_sol_for_c = "(2. * (37. * (6. * x - 355.) + 1903. * exp(37. * (x - 3.) / 22.) - 1903. * exp(3219./22.)))/1369."
 # analytical_solution = "\\frac{2(37(6x - 355) + 1903e^{37(x-3)/22} - 1903e^{3219/22})}{1369}"
 
-an_sol_for_c = "(exp(56./3.) * (44. * x + 64.) + 63. * exp(4 * x / 3.) - 63.)/(16. * exp(56./3.))"
-analytical_solution = "\\frac{e^{56/3}(44x+64) + 63 e^{4x/3} - 63}{16 e^{56/3}}"
+an_sol_for_c = "(60. * x + 85. * exp(4. * (x + 3.) / 17.) - 85. * exp(44. / 17.) - 416.) / 16."
+analytical_solution = "\\frac{1}{16}\\left(60 x+85 e^{(4(x+3)) / 17}-85 e^{44 / 17}-416\\right)"
 
 
 # Jinja init
