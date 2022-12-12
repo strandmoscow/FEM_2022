@@ -195,33 +195,31 @@ double calc_abs_error(const std::vector<double>& y_real, const std::vector<doubl
 int main() {
     
     //нахождение количества линейных КЭ
-//    int N=4000,n=0;
-//    double err=10;
-//    std::vector<double> y_r(N + 1);
-//    std::vector<double> y(N + 1);
+    int N=20,n=0;
+    double err=10;
+    std::vector<double> y_r(N + 1);
+    std::vector<double> y(N + 1);
     FILE* pogr;
     pogr = fopen("res/labs/text/pogr.txt", "w");
-//    while (err>CUB && n<=5000){
-//
-//        double L = (X_END - X_BEGIN) / N;
-//        std::vector<double> x(N + 1);
-//        for (size_t i = 0; i < x.size(); i++) {
-//            x.at(i) = X_BEGIN + i * L;
-//        }
-//
-//        y = build_linear_solution(N);
-//        y_r = build_analytical_solution(x);
-//
-//        err=calc_abs_error(y_r, y);
-//
-//        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
-//        N+=1;
-//        n+=1;
-//    }
+    while (err>CUB && n<=5000){
 
-    fprintf(pogr, "%d", 45034);
+        double L = (X_END - X_BEGIN) / N;
+        std::vector<double> x(N + 1);
+        for (size_t i = 0; i < x.size(); i++) {
+            x.at(i) = X_BEGIN + i * L;
+        }
 
-    fclose(pogr);
+        y = build_linear_solution(N);
+        y_r = build_analytical_solution(x);
+
+        err=calc_abs_error(y_r, y);
+
+        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
+        N+=1;
+        n+=1;
+    }
+
+    fprintf(pogr, "%d", N);
   
     return 0;
 }

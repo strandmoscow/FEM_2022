@@ -2,13 +2,13 @@
 #include <vector>
 #include <cmath>
 
-double EPS = 1e-16, CUB=8.482971e-09;
-double X_BEGIN = -3.0;
-double X_END = 8.0;
+double EPS = 1e-16, CUB=0.0009731184;
+double X_BEGIN = 0.0;
+double X_END = 12.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 17.0, B = -4.0, C = 0.0, D = 15.0, usl_left = 5.0, usl_right = 4.0; // au"+Bu'+Cu+D=0
+double a = 12.0, B = -45.0, C = 0.0, D = 6.0, usl_left = 10.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (60. * x + 85. * exp(4. * (x + 3.) / 17.) - 85. * exp(44. / 17.) - 416.) / 16.;
+    return (30. * exp(45.) * (x + 75.) + 592. * exp(15. * x / 4.) - 592.) / 225. / exp(45.);
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -81,7 +81,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
     }
 
     // Учет ГУ
-    if ( 1 == 1 ) {
+    if ( 0 == 1 ) {
         b.at(0) =  D * L /2. - a*usl_left;
     } else {
         b.at(0) = usl_left;
@@ -89,7 +89,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
         A.at(0).at(1) = 0;
     }
 
-    if ( 0 == 1 ) {
+    if ( 1 == 1 ) {
         b.at(size - 1) =  D * L /2. + a*usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -160,7 +160,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
     }
        
     // Учет ГУ
-    if (1 == 1 ) {
+    if (0 == 1 ) {
         b.at(0) =  local_b_mod.at(0) - a * usl_left;
     } else {
         b.at(0) = usl_left;
@@ -168,7 +168,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
         A.at(0).at(1) = 0.;
     }
 
-    if (0 == 1 ) {
+    if (1 == 1 ) {
         b.at(size - 1) =  local_b_mod.at(1) + a * usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -195,33 +195,31 @@ double calc_abs_error(const std::vector<double>& y_real, const std::vector<doubl
 int main() {
     
     //нахождение количества линейных КЭ
-//    int N=4000,n=0;
-//    double err=10;
-//    std::vector<double> y_r(N + 1);
-//    std::vector<double> y(N + 1);
+    int N=20,n=0;
+    double err=10;
+    std::vector<double> y_r(N + 1);
+    std::vector<double> y(N + 1);
     FILE* pogr;
     pogr = fopen("res/labs/text/pogr.txt", "w");
-//    while (err>CUB && n<=5000){
-//
-//        double L = (X_END - X_BEGIN) / N;
-//        std::vector<double> x(N + 1);
-//        for (size_t i = 0; i < x.size(); i++) {
-//            x.at(i) = X_BEGIN + i * L;
-//        }
-//
-//        y = build_linear_solution(N);
-//        y_r = build_analytical_solution(x);
-//
-//        err=calc_abs_error(y_r, y);
-//
-//        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
-//        N+=1;
-//        n+=1;
-//    }
+    while (err>CUB && n<=5000){
 
-    fprintf(pogr, "%d", 45034);
+        double L = (X_END - X_BEGIN) / N;
+        std::vector<double> x(N + 1);
+        for (size_t i = 0; i < x.size(); i++) {
+            x.at(i) = X_BEGIN + i * L;
+        }
 
-    fclose(pogr);
+        y = build_linear_solution(N);
+        y_r = build_analytical_solution(x);
+
+        err=calc_abs_error(y_r, y);
+
+        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
+        N+=1;
+        n+=1;
+    }
+
+    fprintf(pogr, "%d", N);
   
     return 0;
 }

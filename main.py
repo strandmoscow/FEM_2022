@@ -3,29 +3,27 @@ import numpy as np
 from jinja2 import Environment, FileSystemLoader
 import matplotlib.pyplot as plt
 
-author_name="{Зайковская Анастасия Владимировна}"
-author_name_short="{Зайковская А.В.}"
-group="{РК6-72б}"
-variant="{28}"
+author_name="{Чернышева Елизавета Андреевна}"
+author_name_short="{Чернышева Е.А.}"
+group="{РК6-73б}"
+variant="{48}"
 
-a = 17.0
-b = -4.0
+a = 12.0
+b = -45.0
 c = 0.0
-d = 15.0
+d = 6.0
 
-min_int = -3.0
-min_cond_type = 1
-min_value = 5.0
+min_int = 0.0
+min_cond_type = 0
+min_value = 10.0
 
-max_int = 8.0
-max_cond_type = 0
-max_value = 4.0
+max_int = 12.0
+max_cond_type = 1
+max_value = 10.0
 
-# an_sol_for_c = "(2. * (37. * (6. * x - 355.) + 1903. * exp(37. * (x - 3.) / 22.) - 1903. * exp(3219./22.)))/1369."
-# analytical_solution = "\\frac{2(37(6x - 355) + 1903e^{37(x-3)/22} - 1903e^{3219/22})}{1369}"
 
-an_sol_for_c = "(60. * x + 85. * exp(4. * (x + 3.) / 17.) - 85. * exp(44. / 17.) - 416.) / 16."
-analytical_solution = "\\frac{1}{16}\\left(60 x+85 e^{(4(x+3)) / 17}-85 e^{44 / 17}-416\\right)"
+an_sol_for_c = "(30. * exp(45.) * (x + 75.) + 592. * exp(15. * x / 4.) - 592.) / 225. / exp(45.)"
+analytical_solution = "y(x)=\\frac{30 e^{45}(x+75)+592 e^{(15 x) / 4}-592}{225 e^{45}}"
 
 
 # Jinja init
