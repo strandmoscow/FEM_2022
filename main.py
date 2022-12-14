@@ -3,27 +3,27 @@ import numpy as np
 from jinja2 import Environment, FileSystemLoader
 import matplotlib.pyplot as plt
 
-author_name="{Гаспарян Грета Андраниковна}"
-author_name_short="{Гаспарян Г.А.}"
+author_name="{Кулагин Арсений Олегович}"
+author_name_short="{Кулагин А.О.}"
 group="{РК6-73б}"
-variant="{49}"
+variant="{54}"
 
-a = 40.0
+a = 51.0
 b = 0.0
-c = -4.0
-d = 11.0
+c = -8.0
+d = 20.0
 
-min_int = 0.0
-min_cond_type = 1
-min_value = -2.0
+min_int = 5.0
+min_cond_type = 0
+min_value = 0.0
 
-max_int = 17.0
-max_cond_type = 0
-max_value = 6.0
+max_int = 50.0
+max_cond_type = 1
+max_value = 1.0
 
 
-an_sol_for_c = "(exp(-x/sqrt(10)) * (-8 * sqrt(10) * exp(sqrt(0.4) * x) + 11 * exp(x/sqrt(10)) + 11 * exp((x + 34.)/sqrt(10)) + 13 * exp((2. * x + 17)/sqrt(10)) + 8 * sqrt(10) * exp(17. * sqrt(0.4)) + 13. * exp(17./sqrt(10))))/(4. * (1. + exp(17. * sqrt(0.4))))"
-analytical_solution = "\\frac{e^{-x / \\sqrt{10}}\\left(-8 \\sqrt{10} e^{\\sqrt{2 / 5} x}+11 e^{x / \\sqrt{10}}+11 e^{(x+34) / \\sqrt{10}}+13 e^{(2 x+17) / \\sqrt{10}}+ 8 \\sqrt{10} e^{17 \\sqrt{2 / 5}}+13 e^{17 / \\sqrt{10}}\\right)}{4\\left(1+e^{17 \\sqrt{2 / 5}}\\right)}"
+an_sol_for_c = "(exp(-2. * sqrt(2./51.) * (x + 5.)) * (exp(2. * sqrt(2./51.) * x) - exp(10. * sqrt(2./51.))) * (-10. * exp(2 * sqrt(2./51.) * x) + sqrt(102) * exp(2. * sqrt(2./51.) * (x + 45.)) + sqrt(102) * exp(100. * sqrt(2./51.)) + 10. * exp(190. * sqrt(2./51.))))/(4. * (1. + exp(60. * sqrt(6./17.))))"
+analytical_solution = "\\frac{ e^{-2 \\sqrt{2 / 51}(x+5)}\\left(e^{2 \\sqrt{2 / 51} x}-e^{10 \\sqrt{2 / 51}}\\right)\\left(-10 e^{2 \\sqrt{2 / 51} x}+\\sqrt{102} e^{2 \\sqrt{2 / 51}(x+45)}+\\sqrt{102} e^{100 \\sqrt{2 / 51}}+10 e^{190 \\sqrt{2 / 51}}\\right)}{4\\left(1+e^{60 \\sqrt{6 / 17}}\\right)}"
 
 
 # Jinja init

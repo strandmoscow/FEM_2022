@@ -68,11 +68,11 @@ $$
 
 В соответствии с методом Галеркина для уравнения \ref{usl}:
 \begin{equation}\label{lin}
-\int_0^L \mathbf{W_e}\left( {{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{d\mathbf{u}}{dx} {% if c_int < 0 %} -{{ c_abs }}u {% endif %} {% if c_int > 0 %} +{{ c_abs }}u {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x=0,
+\int_0^L \mathbf{W_e}\left( {{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }}\frac{d\mathbf{u}}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }}\frac{d\mathbf{u}}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }}u {% endif %} {% if c_int > 0 %} +{{ c_abs }}u {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x=0,
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left({{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{du}{dx} {% if c_int < 0 %} -{{ c_abs }}u {% endif %} {% if c_int > 0 %} +{{ c_abs }}u {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x = {{ a_int }}\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx {% if b_int < 0 %} -{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if b_int > 0 %} +{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if c_int < 0 %} -{{ c_abs }} \int_0^L \mathbf{W_e u} d x {% endif %} {% if c_int > 0 %} +{{ c_abs }} \int_0^L \mathbf{W_e u} dx {% endif %} {% if d_int < 0 %} -{{ d_abs }} \int_0^L \mathbf{W_e} {% endif %} {% if d_int > 0 %} +{{ d_abs }} \int_0^L \mathbf{W_e u} {% endif %}=0$$
+$$\int_0^L \mathbf{W_e}\left({{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }}\frac{du}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }}\frac{du}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }}u {% endif %} {% if c_int > 0 %} +{{ c_abs }}u {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x = {{ a_int }}\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx {% if b_int < 0 %} -{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if b_int > 0 %} +{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if c_int < 0 %} -{{ c_abs }} \int_0^L \mathbf{W_e u} d x {% endif %} {% if c_int > 0 %} +{{ c_abs }} \int_0^L \mathbf{W_e u} dx {% endif %} {% if d_int < 0 %} -{{ d_abs }} \int_0^L \mathbf{W_e} {% endif %} {% if d_int > 0 %} +{{ d_abs }} \int_0^L \mathbf{W_e u} {% endif %}=0$$
 
 Распишем каждое слагаемое отдельно:
 {% if a_int != 0 %}

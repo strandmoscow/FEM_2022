@@ -6,15 +6,15 @@
 
 Решить с помощью МКЭ уравнение \ref{usl}
 \begin{align}\label{usl}
-40\frac{d^2u}{dx^2}    -4u     +11 
+51\frac{d^2u}{dx^2}    -8u     +20 
 =0,
 \end{align}
 при следующих граничных условиях (г. у.): 
 \begin{align}\label{2_rod}
-    u'(x=0) = -2,
+    u(x=5) = 0,
 \end{align}
 \begin{align}\label{1_rod}
-    u(x=17) = 6.
+    u'(x=50) = 1.
 \end{align}
 
 Количество конечных элементов
@@ -44,7 +44,7 @@
 
 Таким образом, получаем:
 $$
-u(x)=\frac{e^{-x / \sqrt{10}}\left(-8 \sqrt{10} e^{\sqrt{2 / 5} x}+11 e^{x / \sqrt{10}}+11 e^{(x+34) / \sqrt{10}}+13 e^{(2 x+17) / \sqrt{10}}+ 8 \sqrt{10} e^{17 \sqrt{2 / 5}}+13 e^{17 / \sqrt{10}}\right)}{4\left(1+e^{17 \sqrt{2 / 5}}\right)}.
+u(x)=\frac{ e^{-2 \sqrt{2 / 51}(x+5)}\left(e^{2 \sqrt{2 / 51} x}-e^{10 \sqrt{2 / 51}}\right)\left(-10 e^{2 \sqrt{2 / 51} x}+\sqrt{102} e^{2 \sqrt{2 / 51}(x+45)}+\sqrt{102} e^{100 \sqrt{2 / 51}}+10 e^{190 \sqrt{2 / 51}}\right)}{4\left(1+e^{60 \sqrt{6 / 17}}\right)}.
 $$
 
 
@@ -68,22 +68,22 @@ $$
 
 В соответствии с методом Галеркина для уравнения \ref{usl}:
 \begin{equation}\label{lin}
-\int_0^L \mathbf{W_e}\left( 40\frac{d^2\mathbf{u}}{dx^2} \frac{d\mathbf{u}}{dx}  -4u     +11 \right) d x=0,
+\int_0^L \mathbf{W_e}\left( 51\frac{d^2\mathbf{u}}{dx^2}   -8u     +20 \right) d x=0,
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left(40\frac{d^2\mathbf{u}}{dx^2} \frac{du}{dx}  -4u     +11 \right) d x = 40\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx    -4 \int_0^L \mathbf{W_e u} d x     +11 \int_0^L \mathbf{W_e u} =0$$
+$$\int_0^L \mathbf{W_e}\left(51\frac{d^2\mathbf{u}}{dx^2}   -8u     +20 \right) d x = 51\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx    -8 \int_0^L \mathbf{W_e u} d x     +20 \int_0^L \mathbf{W_e u} =0$$
 
 Распишем каждое слагаемое отдельно:
 
 $$
-40\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=40\int_0^L
+51\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=51\int_0^L
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
 	\end{bmatrix}
 \frac{d^2 \mathbf{u}}{dx^2} dx =
-40
+51
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
@@ -91,7 +91,7 @@ $$
 \frac{d\mathbf{u}}{dx} |_0^L -
 $$
 $$
-  -40  \int_0^L
+  -51  \int_0^L
 \frac{d}{dx}
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
@@ -107,9 +107,9 @@ $$
 	\end{bmatrix}
 =
 	\begin{bmatrix}
-	  -40 \frac{d\mathbf{u}}{dx}|_i \\
-40\frac{d\mathbf{u}}{dx}|_j
-	\end{bmatrix}   -40 
+	  -51 \frac{d\mathbf{u}}{dx}|_i \\
+51\frac{d\mathbf{u}}{dx}|_j
+	\end{bmatrix}   -51 
 \begin{bmatrix}
 \frac{1}{L}, & -\frac{1}{L} \\
 -\frac{1}{L}, & \frac{1}{L}
@@ -125,9 +125,9 @@ $$
 
 
 $$
- -4  
+ -8  
 \int_0^L \mathbf{W_e} \mathbf{u} dx=
- -4  
+ -8  
 \int_0^L
 \begin{bmatrix}
 	(1-\frac{x}{L}) \\
@@ -140,7 +140,7 @@ $$
 \end{bmatrix}
 dx
 =
- -4  
+ -8  
 \begin{bmatrix}
 \frac{L}{3}, & \frac{L}{6} \\
 \frac{L}{6}, & \frac{L}{3}
@@ -154,7 +154,7 @@ $$
 
 
 $$
-11\int_0^L \mathbf{W_e} d x= 11
+20\int_0^L \mathbf{W_e} d x= 20
 \begin{bmatrix}
 	\frac{L}{2} \\
 	\frac{L}{2}
@@ -166,16 +166,16 @@ $$
 
 $$
 \begin{bmatrix}
-	40\frac{1}{L}    -4 \frac{L}{3}  , &   -40 \frac{1}{L}    -4 \frac{L}{6}   \\
-	  -40  \frac{1}{L}    -4 \frac{L}{6}  , &  40\frac{1}{L}    -4 \frac{L}{3}  
+	51\frac{1}{L}    -8 \frac{L}{3}  , &   -51 \frac{1}{L}    -8 \frac{L}{6}   \\
+	  -51  \frac{1}{L}    -8 \frac{L}{6}  , &  51\frac{1}{L}    -8 \frac{L}{3}  
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
 	u_j
 \end{bmatrix}=
 \begin{bmatrix}
-	  -40 \frac{du}{dx}|_i   +11 \frac{L}{2} \\
-	40\frac{du}{dx}|_j   +11 \frac{L}{2} 
+	  -51 \frac{du}{dx}|_i   +20 \frac{L}{2} \\
+	51\frac{du}{dx}|_j   +20 \frac{L}{2} 
 \end{bmatrix}
 $$
 
@@ -199,9 +199,9 @@ $$
 
 Как и для линейной функции-формы применим метод Галеркина (см. уравнение \ref{lin}) и рассмотрим каждое слагаемое отдельно.
 
-$$40 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
+$$51 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 =
-40\int_0^L
+51\int_0^L
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -213,7 +213,7 @@ $$40 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 $$
 $$
 =
-40
+51
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -221,7 +221,7 @@ $$
 	\frac{9x^3}{2L^3}&-&\frac{9x^2}{2L^2}&-&\frac{x}{L}&&
 \end{bmatrix}
 \frac{d\mathbf{u}}{dx} |_0^L
-  -40  \int_0^L \frac{d}{dx}
+  -51  \int_0^L \frac{d}{dx}
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -233,12 +233,12 @@ $$
 $$
 =
 \begin{bmatrix}
-	  -40 \frac{d\mathbf{u}}{dx}|_i \\
+	  -51 \frac{d\mathbf{u}}{dx}|_i \\
 	0\\
 	0\\
-40\frac{d\mathbf{u}}{dx}|_l
+51\frac{d\mathbf{u}}{dx}|_l
 \end{bmatrix}
-  -40 
+  -51 
 \begin{bmatrix}
 \begin{array}{rrrr}
 	\frac{37}{10L} & -\frac{189}{40} & \frac{27}{20L} & -\frac{13}{40L}\\
@@ -259,9 +259,9 @@ $$
 
 
 $$
- -4   \int_0^L \mathbf{W_e} \mathbf{u} dx
+ -8   \int_0^L \mathbf{W_e} \mathbf{u} dx
 =
- -4   \int_0^L
+ -8   \int_0^L
 \begin{bmatrix}
   -\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
   \frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -273,7 +273,7 @@ $$
 $$
 $$
 =
- -4  
+ -8  
 \begin{bmatrix}
 \begin{array}{rrrr}
 	\frac{8L}{105} 		&  \frac{33L}{560} & -\frac{3L}{140}  &  \frac{119L}{1680}\\
@@ -293,9 +293,9 @@ $$
 
 
 $$
-11 \int_0^L \mathbf{W_e} d x
+20 \int_0^L \mathbf{W_e} d x
 =
-11
+20
 \begin{bmatrix}
 	\frac{L}{8} \\
 	\frac{3L}{8}\\
@@ -310,25 +310,25 @@ $$
 
 $$
 \begin{bmatrix}
-		40\frac{37}{10L}    -4 \frac{8L}{105}   &
-		  -40 \frac{189}{40L}     -4 \frac{33L}{560}   &
-		40\frac{27}{20L}   +4 \frac{3L}{140}   &
-		  -40 \frac{13}{40L}     -4 \frac{119L}{1680}  \\
+		51\frac{37}{10L}    -8 \frac{8L}{105}   &
+		  -51 \frac{189}{40L}     -8 \frac{33L}{560}   &
+		51\frac{27}{20L}   +8 \frac{3L}{140}   &
+		  -51 \frac{13}{40L}     -8 \frac{119L}{1680}  \\
 
-		  -40 \frac{189}{40L}    -4 \frac{33L}{560}   &
-		40\frac{54}{5L}+0  -4 \frac{27L}{170}   &
-		  -40 \frac{297}{40L}   +4 \frac{27L}{560}   &
-		40\frac{27}{20L}    +4 \frac{27L}{560}   \\
+		  -51 \frac{189}{40L}    -8 \frac{33L}{560}   &
+		51\frac{54}{5L}+0  -8 \frac{27L}{170}   &
+		  -51 \frac{297}{40L}   +8 \frac{27L}{560}   &
+		51\frac{27}{20L}    +8 \frac{27L}{560}   \\
 
-		40\frac{27}{20L}     +4 \frac{27L}{560}   &
-		  -40 \frac{297}{40L}   +4 \frac{27L}{560}   &
-		40\frac{54}{5L}+0  -4 \frac{27L}{170}   &
-		  -40 \frac{189}{40L}    -4 \frac{33L}{560}   \\
+		51\frac{27}{20L}     +8 \frac{27L}{560}   &
+		  -51 \frac{297}{40L}   +8 \frac{27L}{560}   &
+		51\frac{54}{5L}+0  -8 \frac{27L}{170}   &
+		  -51 \frac{189}{40L}    -8 \frac{33L}{560}   \\
 
-	      -40 \frac{13}{40L}    -4 \frac{19L}{1680}   &
-		40\frac{27}{20L} \frac{3}{10}  -4 \frac{3L}{140}   &
-		  -40 \frac{189}{40L}   -4 \frac{33L}{560}   &
-		40\frac{37}{10L}    -4 \frac{8L}{105}  
+	      -51 \frac{13}{40L}    -8 \frac{19L}{1680}   &
+		51\frac{27}{20L} \frac{3}{10}  -8 \frac{3L}{140}   &
+		  -51 \frac{189}{40L}   -8 \frac{33L}{560}   &
+		51\frac{37}{10L}    -8 \frac{8L}{105}  
 \end{bmatrix}
 \cdot
 $$
@@ -342,10 +342,10 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-     11\frac{L}{8}    -40 \frac{du}{dx}|_i   \\
-	 11\frac{3L}{8} \\
-	 11\frac{3L}{8} \\
-	 11\frac{L}{8}    +40 \frac{du}{dx}|_l 
+     20\frac{L}{8}    -51 \frac{du}{dx}|_i   \\
+	 20\frac{3L}{8} \\
+	 20\frac{3L}{8} \\
+	 20\frac{L}{8}    +51 \frac{du}{dx}|_l 
 \end{bmatrix}
 \end{align}
 
@@ -364,10 +364,10 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -40  \frac{du}{dx}|_i \\
+b_1   -51  \frac{du}{dx}|_i \\
 b_2\\
 b_3\\
-b_4   +40  \frac{du}{dx}|_l
+b_4   +51  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 Для упрощения расчетов преобразуем систему выше, исключив внутренние узлы. Таким образом СЛАУ (математическая модель кубического КЭ):
@@ -381,8 +381,8 @@ u_i \\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -40  \frac{du}{dx}|_i \\
-b_4   +40  \frac{du}{dx}|_l
+b_1   -51  \frac{du}{dx}|_i \\
+b_4   +51  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 %-------------------------------------------------
@@ -404,8 +404,8 @@ u_i \\
 u_j
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -40  \frac{du}{dx}|_i \\
-b_2   +40  \frac{du}{dx}|_l
+b_1   -51  \frac{du}{dx}|_i \\
+b_2   +51  \frac{du}{dx}|_l
 \end{bmatrix},$$
 
 тогда, при разбитие области на $n$ КЭ, глобальная матрица жесткости  будет иметь размерность $(n+1)\cdot(n+1)$:
@@ -429,13 +429,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
-b_1^1   -40  \frac{du}{dx}|_0 \\
+b_1^1   -51  \frac{du}{dx}|_0 \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
-b_2^n   +40  \frac{du}{dx}|_L
+b_2^n   +51  \frac{du}{dx}|_L
 \end{bmatrix}
 $$
 
@@ -463,13 +463,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
- b_1^1   -40  \cdot -2   \\
+ 0   \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
- 6   \\
+ b_2^n   +51  \cdot 1   \\
 \end{bmatrix}
 $$
 
@@ -600,12 +600,12 @@ X & Аналитическое & МКЭ-    & Абсолютная \\
 #include <cmath>
 
 double EPS = 1e-16;
-double X_BEGIN = 0.0;
-double X_END = 17.0;
+double X_BEGIN = 5.0;
+double X_END = 50.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 40.0, B = 0.0, C = -4.0, D = 11.0, usl_left = -2.0, usl_right = 6.0; // au"+Bu'+Cu+D=0
+double a = 51.0, B = 0.0, C = -8.0, D = 20.0, usl_left = 0.0, usl_right = 1.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -640,7 +640,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (exp(-x/sqrt(10)) * (-8 * sqrt(10) * exp(sqrt(0.4) * x) + 11 * exp(x/sqrt(10)) + 11 * exp((x + 34.)/sqrt(10)) + 13 * exp((2. * x + 17)/sqrt(10)) + 8 * sqrt(10) * exp(17. * sqrt(0.4)) + 13. * exp(17./sqrt(10))))/(4. * (1. + exp(17. * sqrt(0.4))));
+    return (exp(-2. * sqrt(2./51.) * (x + 5.)) * (exp(2. * sqrt(2./51.) * x) - exp(10. * sqrt(2./51.))) * (-10. * exp(2 * sqrt(2./51.) * x) + sqrt(102) * exp(2. * sqrt(2./51.) * (x + 45.)) + sqrt(102) * exp(100. * sqrt(2./51.)) + 10. * exp(190. * sqrt(2./51.))))/(4. * (1. + exp(60. * sqrt(6./17.))));
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -678,7 +678,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
     }
 
     // Учет ГУ
-    if ( 1 == 1 ) {
+    if ( 0 == 1 ) {
         b.at(0) =  D * L /2. - a*usl_left;
     } else {
         b.at(0) = usl_left;
@@ -686,7 +686,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
         A.at(0).at(1) = 0;
     }
 
-    if ( 0 == 1 ) {
+    if ( 1 == 1 ) {
         b.at(size - 1) =  D * L /2. + a*usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -757,7 +757,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
     }
        
     // Учет ГУ
-    if (1 == 1 ) {
+    if (0 == 1 ) {
         b.at(0) =  local_b_mod.at(0) - a * usl_left;
     } else {
         b.at(0) = usl_left;
@@ -765,7 +765,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
         A.at(0).at(1) = 0.;
     }
 
-    if (0 == 1 ) {
+    if (1 == 1 ) {
         b.at(size - 1) =  local_b_mod.at(1) + a * usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -867,11 +867,11 @@ int main() {
 \labattributes{}{}{}{}{студент группы \EduGroup, \Author}{\Year, \Semestr}
 %--------------
 
-%   +40 
-%   -40 
+%   +51 
+%   -51 
 
 %  
 %  
 
-%   +11 
-%   -11 
+%   +20 
+%   -20 
