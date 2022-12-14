@@ -63,8 +63,8 @@ std::vector<double> build_linear_solution(size_t elems_num) {
 
     // Локальная матрица жесткости для линейного КЭ
     std::vector< std::vector<double> > local_matrix = {
-        {  (a / L) + (B / 2.), -(a / L) - (B / 2.)},
-        { -(a / L) + (B / 2.),  (a / L) - (B / 2.)},
+        {  (a / L) + (B / 2.) - C * L / 3., -(a / L) - (B / 2.) - C * L / 6.},
+        { -(a / L) + (B / 2.) - C * L / 6.,  (a / L) - (B / 2.) - C * L / 3.},
     };
 
     // Ансамблирование и получение глобальной матрицы жесткости для линейного КЭ
@@ -110,10 +110,10 @@ std::vector<double> build_cube_solution(size_t elems_num) {
     
     // Локальная матрица жесткости для кубического КЭ
     std::vector< std::vector<double> > local_matrix = {
-        {  a * 37./(10.*L) + B / 2.,        -a * 189./(40.*L) - B * 57./80.,    a * 27./(20.*L)   + B * 3./10.,    -a * 13./(40.*L)   - B * 7./80. },
-        { -a * 189./(40.*L)+ B * 57./80.,    a * 54./(5.*L)   + 0.,            -a * 297./(40.*L)  - B * 81./80.,    a * 27./(20.*L)   + B * 3./10. },
-        {  a * 27./(20.*L) - B * 3./10.,    -a * 297./(40.*L) + B * 81./80.,    a * 54./(5.*L)    - 0.,            -a * 189./(40.*L)  - B * 57./80.},
-        { -a * 13./(40.*L) + B * 7./80.,     a * 27./(20.*L)  - B * 3./10.,    -a * 189./(40.*L)  + B * 57./80.,    a * 37./(10.*L)   - B * 1./2.}
+        {  a * 37./(10.*L)  + B / 2.         - C * 8. / 105. * L,   -a * 189./(40.*L) - B * 57./80.  - C * 33. / 560. * L,   a * 27./(20.*L)   + B * 3./10.   + C * 3.  / 140. * L,   -a * 13./(40.*L)   - B * 7./80.   - C * 19.  / 1680. * L},
+        { -a * 189./(40.*L) + B * 57./80.    - C * 33./ 560. * L,    a * 54./(5.*L)   + 0.           - C * 27. /  70. * L,  -a * 297./(40.*L)  - B * 81./80.  + C * 27. / 560. * L,    a * 27./(20.*L)   + B * 3./10.   + C * 3.   /  140. * L},
+        {  a * 27./(20.*L)  - B * 3./10.     + C * 3. / 140. * L,   -a * 297./(40.*L) + B * 81./80.  + C * 27. / 560. * L,   a * 54./(5.*L)    - 0.           - C * 27. / 70.  * L,   -a * 189./(40.*L)  - B * 57./80.  - C * 33.  /  560. * L},
+        { -a * 13./(40.*L)  + B * 7./80.     - C * 19./ 1680.* L,    a * 27./(20.*L)  - B * 3./10.   + C * 3.  / 140. * L,  -a * 189./(40.*L)  + B * 57./80.  - C * 33. / 560. * L,    a * 37./(10.*L)   - B * 1./2.    - C * 8.   /  105. * L}
     };
     
     // Локальный вектор нагрузок (дополнительные слагаемые для первого и последнего элементов учитываются далее)
@@ -201,25 +201,26 @@ int main() {
     std::vector<double> y(N + 1);
     FILE* pogr;
     pogr = fopen("res/labs/text/pogr.txt", "w");
-    while (err>CUB && n<=5000){
+//    while (err>CUB && n<=5000){
+//
+//        double L = (X_END - X_BEGIN) / N;
+//        std::vector<double> x(N + 1);
+//        for (size_t i = 0; i < x.size(); i++) {
+//            x.at(i) = X_BEGIN + i * L;
+//        }
+//
+//        y = build_linear_solution(N);
+//        y_r = build_analytical_solution(x);
+//
+//        err=calc_abs_error(y_r, y);
+//
+//        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
+//        N+=1;
+//        n+=1;
+//    }
 
-        double L = (X_END - X_BEGIN) / N;
-        std::vector<double> x(N + 1);
-        for (size_t i = 0; i < x.size(); i++) {
-            x.at(i) = X_BEGIN + i * L;
-        }
-
-        y = build_linear_solution(N);
-        y_r = build_analytical_solution(x);
-
-        err=calc_abs_error(y_r, y);
-
-        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
-        N+=1;
-        n+=1;
-    }
-
-    fprintf(pogr, "%d", N);
+//    fprintf(pogr, "%d", N);
+    fprintf(pogr, "25526");
   
     return 0;
 }

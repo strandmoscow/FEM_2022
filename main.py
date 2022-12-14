@@ -3,27 +3,27 @@ import numpy as np
 from jinja2 import Environment, FileSystemLoader
 import matplotlib.pyplot as plt
 
-author_name="{Власенков Кирилл}"
-author_name_short="{Власенков К.}"
-group="{РК6-74б}"
-variant="{65}"
+author_name="{Гаспарян Грета Андраниковна}"
+author_name_short="{Гаспарян Г.А.}"
+group="{РК6-73б}"
+variant="{49}"
 
-a = 20.0
-b = -5.0
-c = 3.0
-d = 0.0
+a = 40.0
+b = 0.0
+c = -4.0
+d = 11.0
 
-min_int = 1.0
-min_cond_type = 0
-min_value = 10.0
+min_int = 0.0
+min_cond_type = 1
+min_value = -2.0
 
-max_int = 9.0
-max_cond_type = 1
-max_value = -6.0
+max_int = 17.0
+max_cond_type = 0
+max_value = 6.0
 
 
-an_sol_for_c = "2. * (37. * (6. * x - 355) + 1903. * exp(37. * (x - 3.) / 22) - 1903. * exp(3219./22.)) / 1369."
-analytical_solution = "\\frac{2\\left(37(6 x-355)+1903 e^{(37(x-3)) / 22}-1903 e^{3219 / 22}\\right)}{1369}"
+an_sol_for_c = "(exp(-x/sqrt(10)) * (-8 * sqrt(10) * exp(sqrt(0.4) * x) + 11 * exp(x/sqrt(10)) + 11 * exp((x + 34.)/sqrt(10)) + 13 * exp((2. * x + 17)/sqrt(10)) + 8 * sqrt(10) * exp(17. * sqrt(0.4)) + 13. * exp(17./sqrt(10))))/(4. * (1. + exp(17. * sqrt(0.4))))"
+analytical_solution = "\\frac{e^{-x / \\sqrt{10}}\\left(-8 \\sqrt{10} e^{\\sqrt{2 / 5} x}+11 e^{x / \\sqrt{10}}+11 e^{(x+34) / \\sqrt{10}}+13 e^{(2 x+17) / \\sqrt{10}}+ 8 \\sqrt{10} e^{17 \\sqrt{2 / 5}}+13 e^{17 / \\sqrt{10}}\\right)}{4\\left(1+e^{17 \\sqrt{2 / 5}}\\right)}"
 
 
 # Jinja init
@@ -171,7 +171,7 @@ for file in result_files:
     ax.set(xlabel='X', ylabel='U')
 
     ax.plot(x, y, 'r-')
-    # ax.plot(x_abs, y_abs, 'b-')
+    ax.plot(x_abs, y_abs, 'b-')
     ax.grid()
     fig.savefig(file['save_to'])
     plt.cla()

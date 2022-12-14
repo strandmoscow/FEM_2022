@@ -3,12 +3,12 @@
 #include <cmath>
 
 double EPS = 1e-16;
-double X_BEGIN = 3.0;
-double X_END = 90.0;
+double X_BEGIN = 0.0;
+double X_END = 17.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 22.0, B = -37.0, C = 0.0, D = 12.0, usl_left = 5.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
+double a = 40.0, B = 0.0, C = -4.0, D = 11.0, usl_left = -2.0, usl_right = 6.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return 2. * (37. * (6. * x - 355) + 1903. * exp(37. * (x - 3.) / 22) - 1903. * exp(3219./22.)) / 1369.;
+    return (exp(-x/sqrt(10)) * (-8 * sqrt(10) * exp(sqrt(0.4) * x) + 11 * exp(x/sqrt(10)) + 11 * exp((x + 34.)/sqrt(10)) + 13 * exp((2. * x + 17)/sqrt(10)) + 8 * sqrt(10) * exp(17. * sqrt(0.4)) + 13. * exp(17./sqrt(10))))/(4. * (1. + exp(17. * sqrt(0.4))));
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -110,10 +110,10 @@ std::vector<double> build_cube_solution(size_t elems_num) {
     
     // Локальная матрица жесткости для кубического КЭ
     std::vector< std::vector<double> > local_matrix = {
-        {  a * 37./(10.*L)  + B / 2.         + C * 8. / 105. * L,   -a * 189./(40.*L) - B * 57./80.  + C * 33. / 560. * L,   a * 27./(20.*L)   + B * 3./10.   - C * 3.  / 140. * L,   -a * 13./(40.*L)   - B * 7./80.   + C * 19.  / 1680. * L},
-        { -a * 189./(40.*L) + B * 57./80.    + C * 33./ 560. * L,    a * 54./(5.*L)   + 0.           + C * 27. /  70. * L,  -a * 297./(40.*L)  - B * 81./80.  - C * 27. / 560. * L,    a * 27./(20.*L)   + B * 3./10.   - C * 3.   /  140. * L},
-        {  a * 27./(20.*L)  - B * 3./10.     - C * 3. / 140. * L,   -a * 297./(40.*L) + B * 81./80.  - C * 27. / 560. * L,   a * 54./(5.*L)    - 0.           + C * 27. / 70.  * L,   -a * 189./(40.*L)  - B * 57./80.  + C * 33.  /  560. * L},
-        { -a * 13./(40.*L)  + B * 7./80.     + C * 19./ 1680.* L,    a * 27./(20.*L)  - B * 3./10.   + C * 3.  / 140. * L,  -a * 189./(40.*L)  + B * 57./80.  + C * 33. / 560. * L,    a * 37./(10.*L)   - B * 1./2.    + C * 8.   /  105. * L}
+        {  a * 37./(10.*L)  + B / 2.         - C * 8. / 105. * L,   -a * 189./(40.*L) - B * 57./80.  - C * 33. / 560. * L,   a * 27./(20.*L)   + B * 3./10.   + C * 3.  / 140. * L,   -a * 13./(40.*L)   - B * 7./80.   - C * 19.  / 1680. * L},
+        { -a * 189./(40.*L) + B * 57./80.    - C * 33./ 560. * L,    a * 54./(5.*L)   + 0.           - C * 27. /  70. * L,  -a * 297./(40.*L)  - B * 81./80.  + C * 27. / 560. * L,    a * 27./(20.*L)   + B * 3./10.   + C * 3.   /  140. * L},
+        {  a * 27./(20.*L)  - B * 3./10.     + C * 3. / 140. * L,   -a * 297./(40.*L) + B * 81./80.  + C * 27. / 560. * L,   a * 54./(5.*L)    - 0.           - C * 27. / 70.  * L,   -a * 189./(40.*L)  - B * 57./80.  - C * 33.  /  560. * L},
+        { -a * 13./(40.*L)  + B * 7./80.     - C * 19./ 1680.* L,    a * 27./(20.*L)  - B * 3./10.   + C * 3.  / 140. * L,  -a * 189./(40.*L)  + B * 57./80.  - C * 33. / 560. * L,    a * 37./(10.*L)   - B * 1./2.    - C * 8.   /  105. * L}
     };
     
     // Локальный вектор нагрузок (дополнительные слагаемые для первого и последнего элементов учитываются далее)
