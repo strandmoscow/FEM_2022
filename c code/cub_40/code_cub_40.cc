@@ -3,12 +3,12 @@
 #include <cmath>
 
 double EPS = 1e-16;
-double X_BEGIN = 0.0;
-double X_END = 12.0;
+double X_BEGIN = 3.0;
+double X_END = 90.0;
 size_t ELEMS_NUM = 40;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 12.0, B = -45.0, C = 0.0, D = 6.0, usl_left = 10.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
+double a = 22.0, B = -37.0, C = 0.0, D = 12.0, usl_left = 5.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (30. * exp(45.) * (x + 75.) + 592. * exp(15. * x / 4.) - 592.) / 225. / exp(45.);
+    return 2. * (37. * (6. * x - 355) + 1903. * exp(37. * (x - 3.) / 22) - 1903. * exp(3219./22.)) / 1369.;
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -63,8 +63,8 @@ std::vector<double> build_linear_solution(size_t elems_num) {
 
     // Локальная матрица жесткости для линейного КЭ
     std::vector< std::vector<double> > local_matrix = {
-        {  (a / L) + (B / 2.), -(a / L) - (B / 2.)},
-        { -(a / L) + (B / 2.),  (a / L) - (B / 2.)},
+        {  (a / L) + (B / 2.) - C * L / 3., -(a / L) - (B / 2.) - C * L / 6.},
+        { -(a / L) + (B / 2.) - C * L / 6.,  (a / L) - (B / 2.) - C * L / 3.},
     };
 
     // Ансамблирование и получение глобальной матрицы жесткости для линейного КЭ
@@ -81,7 +81,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
     }
 
     // Учет ГУ
-    if ( 0 == 1 ) {
+    if ( 1 == 1 ) {
         b.at(0) =  D * L /2. - a*usl_left;
     } else {
         b.at(0) = usl_left;
@@ -89,7 +89,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
         A.at(0).at(1) = 0;
     }
 
-    if ( 1 == 1 ) {
+    if ( 0 == 1 ) {
         b.at(size - 1) =  D * L /2. + a*usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -110,10 +110,10 @@ std::vector<double> build_cube_solution(size_t elems_num) {
     
     // Локальная матрица жесткости для кубического КЭ
     std::vector< std::vector<double> > local_matrix = {
-        {  a * 37./(10.*L) + B / 2.,        -a * 189./(40.*L) - B * 57./80.,    a * 27./(20.*L)   + B * 3./10.,    -a * 13./(40.*L)   - B * 7./80. },
-        { -a * 189./(40.*L)+ B * 57./80.,    a * 54./(5.*L)   + 0.,            -a * 297./(40.*L)  - B * 81./80.,    a * 27./(20.*L)   + B * 3./10. },
-        {  a * 27./(20.*L) - B * 3./10.,    -a * 297./(40.*L) + B * 81./80.,    a * 54./(5.*L)    - 0.,            -a * 189./(40.*L)  - B * 57./80.},
-        { -a * 13./(40.*L) + B * 7./80.,     a * 27./(20.*L)  - B * 3./10.,    -a * 189./(40.*L)  + B * 57./80.,    a * 37./(10.*L)   - B * 1./2.}
+        {  a * 37./(10.*L)  + B / 2.         + C * 8. / 105. * L,   -a * 189./(40.*L) - B * 57./80.  + C * 33. / 560. * L,   a * 27./(20.*L)   + B * 3./10.   - C * 3.  / 140. * L,   -a * 13./(40.*L)   - B * 7./80.   + C * 19.  / 1680. * L},
+        { -a * 189./(40.*L) + B * 57./80.    + C * 33./ 560. * L,    a * 54./(5.*L)   + 0.           + C * 27. /  70. * L,  -a * 297./(40.*L)  - B * 81./80.  - C * 27. / 560. * L,    a * 27./(20.*L)   + B * 3./10.   - C * 3.   /  140. * L},
+        {  a * 27./(20.*L)  - B * 3./10.     - C * 3. / 140. * L,   -a * 297./(40.*L) + B * 81./80.  - C * 27. / 560. * L,   a * 54./(5.*L)    - 0.           + C * 27. / 70.  * L,   -a * 189./(40.*L)  - B * 57./80.  + C * 33.  /  560. * L},
+        { -a * 13./(40.*L)  + B * 7./80.     + C * 19./ 1680.* L,    a * 27./(20.*L)  - B * 3./10.   + C * 3.  / 140. * L,  -a * 189./(40.*L)  + B * 57./80.  + C * 33. / 560. * L,    a * 37./(10.*L)   - B * 1./2.    + C * 8.   /  105. * L}
     };
     
     // Локальный вектор нагрузок (дополнительные слагаемые для первого и последнего элементов учитываются далее)
@@ -160,7 +160,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
     }
        
     // Учет ГУ
-    if (0 == 1 ) {
+    if (1 == 1 ) {
         b.at(0) =  local_b_mod.at(0) - a * usl_left;
     } else {
         b.at(0) = usl_left;
@@ -168,7 +168,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
         A.at(0).at(1) = 0.;
     }
 
-    if (1 == 1 ) {
+    if (0 == 1 ) {
         b.at(size - 1) =  local_b_mod.at(1) + a * usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -242,9 +242,9 @@ int main() {
      }
 
      for (size_t i = 0; i < x.size()-1; i++) {
-        fprintf(tab, "%lf & %lf & %lf & %lf \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
+        fprintf(tab, "%le & %le & %le & %le \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
      }
-     fprintf(tab, "%lf & %lf & %lf & %lf", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
+     fprintf(tab, "%le & %le & %le & %le", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
 
      for (size_t i = 0; i < x_size; i++) {
          fprintf(gp, "%lf %lf\n", x.at(i), y.at(i));

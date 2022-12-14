@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  12 DEC 2022 22:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.8)  14 DEC 2022 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1428,16 +1428,16 @@ Overfull \hbox (12.80959pt too wide) in paragraph at lines 65--71
 
  [2]
 (./labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex [3]
-<labs/img/img1.png, id=132, 803.0pt x 637.38126pt>
+<labs/img/img1.png, id=132, 800.9925pt x 603.25375pt>
 File: labs/img/img1.png Graphic file (type png)
 <use labs/img/img1.png>
-Package pdftex.def Info: labs/img/img1.png  used on input line 41.
-(pdftex.def)             Requested size: 401.49902pt x 318.68985pt.
+Package pdftex.def Info: labs/img/img1.png  used on input line 39.
+(pdftex.def)             Requested size: 400.49527pt x 301.62613pt.
  [4 <./labs/img/img1.png>]
 [5]
-Overfull \hbox (1.54083pt too wide) detected at line 236
-\U/MnSymbolD/m/n/12 ^^@ \OT1/cmr/m/n/12 12 [] []\OMX/MnSymbolE/m/n/12 S[] \U/Mn
-SymbolC/m/n/12 ^^P \OT1/cmr/m/n/12 12 [][] [] [] []\OT1/cmr/bx/n/12 u \U/MnSymb
+Overfull \hbox (1.54083pt too wide) detected at line 242
+\U/MnSymbolD/m/n/12 ^^@ \OT1/cmr/m/n/12 22 [] []\OMX/MnSymbolE/m/n/12 S[] \U/Mn
+SymbolC/m/n/12 ^^P \OT1/cmr/m/n/12 22 [][] [] [] []\OT1/cmr/bx/n/12 u \U/MnSymb
 olD/m/n/12 ^^@
  []
 
@@ -1445,15 +1445,19 @@ olD/m/n/12 ^^@
 <labs/img/lin/20.png, id=173, 462.528pt x 346.896pt>
 File: labs/img/lin/20.png Graphic file (type png)
 <use labs/img/lin/20.png>
-Package pdftex.def Info: labs/img/lin/20.png  used on input line 467.
+Package pdftex.def Info: labs/img/lin/20.png  used on input line 484.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
 <labs/img/lin/40.png, id=174, 462.528pt x 346.896pt>
 File: labs/img/lin/40.png Graphic file (type png)
 <use labs/img/lin/40.png>
-Package pdftex.def Info: labs/img/lin/40.png  used on input line 473.
+Package pdftex.def Info: labs/img/lin/40.png  used on input line 490.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
- (./labs/text/tab/lin_20.txt) [8 <./labs/img/lin/20.png> <./labs/img/lin/40.png
->] (./labs/text/tab/lin_40.txt) [9]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(./labs/text/tab/lin_20.txt) [8] (./labs/text/tab/lin_40.txt) [9 <./labs/img/li
+n/20.png> <./labs/img/lin/40.png>]
 Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 
 
@@ -1461,12 +1465,12 @@ Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 <labs/img/cub/20.png, id=194, 462.528pt x 346.896pt>
 File: labs/img/cub/20.png Graphic file (type png)
 <use labs/img/cub/20.png>
-Package pdftex.def Info: labs/img/cub/20.png  used on input line 517.
+Package pdftex.def Info: labs/img/cub/20.png  used on input line 534.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
 <labs/img/cub/40.png, id=195, 462.528pt x 346.896pt>
 File: labs/img/cub/40.png Graphic file (type png)
 <use labs/img/cub/40.png>
-Package pdftex.def Info: labs/img/cub/40.png  used on input line 523.
+Package pdftex.def Info: labs/img/cub/40.png  used on input line 540.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
 
 (./labs/text/tab/cub_20.txt) [11 <./labs/img/cub/20.png> <./labs/img/cub/40.png
@@ -1478,7 +1482,7 @@ Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 <labs/img/img2.pdf, id=215, 186.6975pt x 378.45387pt>
 File: labs/img/img2.pdf Graphic file (type pdf)
 <use labs/img/img2.pdf>
-Package pdftex.def Info: labs/img/img2.pdf  used on input line 565.
+Package pdftex.def Info: labs/img/img2.pdf  used on input line 582.
 (pdftex.def)             Requested size: 121.35193pt x 245.9921pt.
 
 (./labs/text/pogr.txt)
@@ -1492,29 +1496,29 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 574.
+nput line 591.
 LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 
-574.
+591.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/cyrillic/t2acmss.fd
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-580.
+597.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [14 <./labs/img/img2.pdf>] [15] [16] [17]
-Overfull \hbox (2.3865pt too wide) in paragraph at lines 718--719
+Overfull \hbox (2.3865pt too wide) in paragraph at lines 735--736
 [][][][][][][][][] 
  []
 
-[18] [19]
-Overfull \hbox (0.80959pt too wide) in paragraph at lines 845--845
+[18] [19] [20]
+Overfull \hbox (0.80959pt too wide) in paragraph at lines 862--862
  []
  []
 
-[20]) [21] (./educmm_lab_Variant_N_M.aux
+) [21] (./educmm_lab_Variant_N_M.aux
 * soulpos - computing points - it may take a few seconds *
 \openout4 = `educmm_lab_Variant_N_M.upb'.
 
@@ -1530,7 +1534,7 @@ Package rerunfilecheck Info: File `educmm_lab_Variant_N_M.out' has not changed.
 Here is how much of TeX's memory you used:
  35496 strings out of 478268
  663492 string characters out of 5846347
- 1189648 words of memory out of 5000000
+ 1257165 words of memory out of 5000000
  52641 multiletter control sequences out of 15000+600000
  509534 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1564,7 +1568,7 @@ lic/cm-super/sfss1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/publi
 c/cm-super/sfsx1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/
 cm-super/sfti1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm
 -super/sfti1200.pfb>
-Output written on educmm_lab_Variant_N_M.pdf (21 pages, 1257968 bytes).
+Output written on educmm_lab_Variant_N_M.pdf (21 pages, 1240724 bytes).
 PDF statistics:
  692 PDF objects out of 1000 (max. 8388607)
  612 compressed objects within 7 object streams

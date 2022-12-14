@@ -3,27 +3,27 @@ import numpy as np
 from jinja2 import Environment, FileSystemLoader
 import matplotlib.pyplot as plt
 
-author_name="{Чернышева Елизавета Андреевна}"
-author_name_short="{Чернышева Е.А.}"
-group="{РК6-73б}"
-variant="{48}"
+author_name="{Власенков Кирилл}"
+author_name_short="{Власенков К.}"
+group="{РК6-74б}"
+variant="{65}"
 
-a = 12.0
-b = -45.0
-c = 0.0
-d = 6.0
+a = 20.0
+b = -5.0
+c = 3.0
+d = 0.0
 
-min_int = 0.0
+min_int = 1.0
 min_cond_type = 0
 min_value = 10.0
 
-max_int = 12.0
+max_int = 9.0
 max_cond_type = 1
-max_value = 10.0
+max_value = -6.0
 
 
-an_sol_for_c = "(30. * exp(45.) * (x + 75.) + 592. * exp(15. * x / 4.) - 592.) / 225. / exp(45.)"
-analytical_solution = "y(x)=\\frac{30 e^{45}(x+75)+592 e^{(15 x) / 4}-592}{225 e^{45}}"
+an_sol_for_c = "2. * (37. * (6. * x - 355) + 1903. * exp(37. * (x - 3.) / 22) - 1903. * exp(3219./22.)) / 1369."
+analytical_solution = "\\frac{2\\left(37(6 x-355)+1903 e^{(37(x-3)) / 22}-1903 e^{3219 / 22}\\right)}{1369}"
 
 
 # Jinja init
@@ -171,7 +171,7 @@ for file in result_files:
     ax.set(xlabel='X', ylabel='U')
 
     ax.plot(x, y, 'r-')
-    ax.plot(x_abs, y_abs, 'b-')
+    # ax.plot(x_abs, y_abs, 'b-')
     ax.grid()
     fig.savefig(file['save_to'])
     plt.cla()
