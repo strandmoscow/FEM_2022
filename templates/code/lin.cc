@@ -81,21 +81,21 @@ std::vector<double> build_linear_solution(size_t elems_num) {
     }
 
     // Учет ГУ
-    if ( {{ min_cond_type }} == 1 ) {
+    {% if min_cond_type == 1 %}
         b.at(0) =  D * L /2. - a*usl_left;
-    } else {
+    {% else %}
         b.at(0) = usl_left;
         A.at(0).at(0) = 1;
         A.at(0).at(1) = 0;
-    }
+    {% endif %}
 
-    if ( {{ max_cond_type }} == 1 ) {
+    {% if max_cond_type == 1 %}
         b.at(size - 1) =  D * L /2. + a*usl_right;
-    } else {
+    {% else %}
         b.at(size - 1) = usl_right;
         A.at(size - 1).at(size - 1) = 1;
         A.at(size - 1).at(size - 2) = 0;
-    }
+    {% endif %}
 
     // Решение полученной СЛАУ методом Гаусса
     std::vector<double> res = solve_with_gauss(A, b);
@@ -207,50 +207,49 @@ int main() {
         y = build_cube_solution(ELEMS_NUM);
     }
      std::vector<double> y_real = build_analytical_solution(x);
-    
 
      FILE* gp;
      FILE* ab;
      FILE* pgr;
      FILE* tab;
-     if ({{ lin }}) {
-        if(ELEMS_NUM == 20) {
-            gp = fopen("res/labs/text/graph/lin_20.txt", "w");
-            ab = fopen("res/labs/text/graph/abs.txt", "w");
-            for (size_t i = 0; i < x_size; i++) {
-                fprintf(ab, "%lf %lf\n", x.at(i), y_real.at(i));
-            }
-            pgr = fopen("res/labs/text/pgr/lin_20.txt", "w");
-            tab = fopen("res/labs/text/tab/lin_20.txt", "w");
-        }
-        if(ELEMS_NUM == 40) {
-            gp = fopen("res/labs/text/graph/lin_40.txt", "w");
-            pgr = fopen("res/labs/text/pgr/lin_40.txt", "w");
-            tab = fopen("res/labs/text/tab/lin_40.txt", "w");
-        }
-     } else {
-        if(ELEMS_NUM == 20) {
-            gp = fopen("res/labs/text/graph/cub_20.txt", "w");
-            pgr = fopen("res/labs/text/pgr/cub_20.txt", "w");
-            tab = fopen("res/labs/text/tab/cub_20.txt", "w");
-        }
-        if(ELEMS_NUM == 40) {
-            gp = fopen("res/labs/text/graph/cub_40.txt", "w");
-            pgr = fopen("res/labs/text/pgr/cub_40.txt", "w");
-            tab = fopen("res/labs/text/tab/cub_40.txt", "w");
-        }
-     }
+     {% if lin == 'true' %}
+        {% if elem == 20 %}
+    gp = fopen("res/labs/text/graph/lin_20.txt", "w");
+    ab = fopen("res/labs/text/graph/abs.txt", "w");
+    for (size_t i = 0; i < x_size; i++) {
+        fprintf(ab, "%lf %lf\n", x.at(i), y_real.at(i));
+        printf("%lf %lf\n", x.at(i), y_real.at(i));
+    }
+    pgr = fopen("res/labs/text/pgr/lin_20.txt", "w");
+    tab = fopen("res/labs/text/tab/lin_20.txt", "w");
+        {% else %}
+    gp = fopen("res/labs/text/graph/lin_40.txt", "w");
+    pgr = fopen("res/labs/text/pgr/lin_40.txt", "w");
+    tab = fopen("res/labs/text/tab/lin_40.txt", "w");
+        {% endif %}
+     {% else %}
+        {% if elem == 20 %}
+    gp = fopen("res/labs/text/graph/cub_20.txt", "w");
+    pgr = fopen("res/labs/text/pgr/cub_20.txt", "w");
+    tab = fopen("res/labs/text/tab/cub_20.txt", "w");
+        {% else %}
+    gp = fopen("res/labs/text/graph/cub_40.txt", "w");
+    pgr = fopen("res/labs/text/pgr/cub_40.txt", "w");
+    tab = fopen("res/labs/text/tab/cub_40.txt", "w");
+        {% endif %}
+     {% endif %}
 
      for (size_t i = 0; i < x.size()-1; i++) {
-        fprintf(tab, "%le & %le & %le & %le \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
+        fprintf(tab, "%f & %le & %le & %le \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
      }
-     fprintf(tab, "%le & %le & %le & %le", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
+     fprintf(tab, "%f & %le & %le & %le", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
 
      for (size_t i = 0; i < x_size; i++) {
          fprintf(gp, "%lf %lf\n", x.at(i), y.at(i));
      }
 
      fprintf(pgr, "%e", calc_abs_error(y_real, y));
+
      fclose(gp);
      fclose(ab);
      fclose(pgr);

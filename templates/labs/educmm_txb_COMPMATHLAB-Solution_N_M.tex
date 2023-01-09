@@ -36,7 +36,7 @@
 На рисунке \ref{analit} представлено аналитическое решение поставленной задачи.
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[scale = 0.5]{labs/img/img1}
+\includegraphics[scale = 0.6]{labs/img/img1_Stroykov}
 \end{center}
 \caption{Аналитическое решение}
 \label{analit}
@@ -72,7 +72,7 @@ $$
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left({{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }}\frac{du}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }}\frac{du}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }}u {% endif %} {% if c_int > 0 %} +{{ c_abs }}u {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x = {{ a_int }}\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx {% if b_int < 0 %} -{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if b_int > 0 %} +{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if c_int < 0 %} -{{ c_abs }} \int_0^L \mathbf{W_e u} d x {% endif %} {% if c_int > 0 %} +{{ c_abs }} \int_0^L \mathbf{W_e u} dx {% endif %} {% if d_int < 0 %} -{{ d_abs }} \int_0^L \mathbf{W_e} {% endif %} {% if d_int > 0 %} +{{ d_abs }} \int_0^L \mathbf{W_e u} {% endif %}=0$$
+$$\int_0^L \mathbf{W_e}\left({{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }}\frac{du}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }}\frac{du}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }}u {% endif %} {% if c_int > 0 %} +{{ c_abs }}u {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x = {{ a_int }}\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx {% if b_int < 0 %} -{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if b_int > 0 %} +{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if c_int < 0 %} -{{ c_abs }} \int_0^L \mathbf{W_e u} d x {% endif %} {% if c_int > 0 %} +{{ c_abs }} \int_0^L \mathbf{W_e u} dx {% endif %} {% if d_int < 0 %} -{{ d_abs }} \int_0^L \mathbf{W_e u} dx {% endif %} {% if d_int > 0 %} +{{ d_abs }} \int_0^L \mathbf{W_e} dx {% endif %}=0$$
 
 Распишем каждое слагаемое отдельно:
 {% if a_int != 0 %}
@@ -514,13 +514,13 @@ $$
 
 $$
 \begin{bmatrix}
-1     &   0        &   0 & \cdots & 0 & 0 & 0  & 0\\
+{% if min_cond_type == 0 %} 1     &   0   {% else %} a_{11}^1     &   a_{12}^1 {% endif %}      &   0 & \cdots & 0 & 0 & 0  & 0\\
 a_{21}^1     &    a_{22}^1+a_{11}^2 & a_{12}^2  & 0 & \cdots & 0 & 0  & 0\\
 0     &    a_{21}^2 & a_{22}^2+a_{11}^3  &  a_{12}^3  & 0 & \cdots & 0  & 0\\
 0     &    0  & a_{21}^3  & a_{22}^3+ \cdots  &  & &   & 0\\
 \vdots & \vdots & \vdots & \vdots &  &  &   & \vdots\\
 0 & 0 & 0 & 0 &  0 & 0 & \cdots+a_{11}^n  & a_{12}^n\\
-0 & 0 & 0 & 0 &  0 & 0 & 0 & 1
+0 & 0 & 0 & 0 &  0 & 0 & {% if max_cond_type == 0 %} 0 & 1 {% else %} a_{21}^n  & a_{22}^n {% endif %}
 \end{bmatrix}
 \begin{bmatrix}
 u_0 \\

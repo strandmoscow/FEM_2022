@@ -6,15 +6,15 @@
 
 Решить с помощью МКЭ уравнение \ref{usl}
 \begin{align}\label{usl}
-51\frac{d^2u}{dx^2}    -8u     +20 
+4\frac{d^2u}{dx^2}    -9u     +10 
 =0,
 \end{align}
 при следующих граничных условиях (г. у.): 
 \begin{align}\label{2_rod}
-    u(x=5) = 0,
+    u(x=2) = 0,
 \end{align}
 \begin{align}\label{1_rod}
-    u'(x=50) = 1.
+    u'(x=14) = 1.
 \end{align}
 
 Количество конечных элементов
@@ -36,7 +36,7 @@
 На рисунке \ref{analit} представлено аналитическое решение поставленной задачи.
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[scale = 0.5]{labs/img/img1}
+\includegraphics[scale = 0.6]{labs/img/img1_Stroykov}
 \end{center}
 \caption{Аналитическое решение}
 \label{analit}
@@ -44,7 +44,7 @@
 
 Таким образом, получаем:
 $$
-u(x)=\frac{ e^{-2 \sqrt{2 / 51}(x+5)}\left(e^{2 \sqrt{2 / 51} x}-e^{10 \sqrt{2 / 51}}\right)\left(-10 e^{2 \sqrt{2 / 51} x}+\sqrt{102} e^{2 \sqrt{2 / 51}(x+45)}+\sqrt{102} e^{100 \sqrt{2 / 51}}+10 e^{190 \sqrt{2 / 51}}\right)}{4\left(1+e^{60 \sqrt{6 / 17}}\right)}.
+u(x)=\frac{2\left(-3 e^{21-(3 x) / 2}-5 e^{39-(3 x) / 2}-5 e^{(3 x) / 2-3}+3 e^{(3 x) / 2+15}+5+5 e^{36}\right)}{9\left(1+e^{36}\right)}.
 $$
 
 
@@ -68,22 +68,22 @@ $$
 
 В соответствии с методом Галеркина для уравнения \ref{usl}:
 \begin{equation}\label{lin}
-\int_0^L \mathbf{W_e}\left( 51\frac{d^2\mathbf{u}}{dx^2}   -8u     +20 \right) d x=0,
+\int_0^L \mathbf{W_e}\left( 4\frac{d^2\mathbf{u}}{dx^2}   -9u     +10 \right) d x=0,
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left(51\frac{d^2\mathbf{u}}{dx^2}   -8u     +20 \right) d x = 51\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx    -8 \int_0^L \mathbf{W_e u} d x     +20 \int_0^L \mathbf{W_e u} =0$$
+$$\int_0^L \mathbf{W_e}\left(4\frac{d^2\mathbf{u}}{dx^2}   -9u     +10 \right) d x = 4\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx    -9 \int_0^L \mathbf{W_e u} d x     +10 \int_0^L \mathbf{W_e} dx =0$$
 
 Распишем каждое слагаемое отдельно:
 
 $$
-51\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=51\int_0^L
+4\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=4\int_0^L
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
 	\end{bmatrix}
 \frac{d^2 \mathbf{u}}{dx^2} dx =
-51
+4
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
@@ -91,7 +91,7 @@ $$
 \frac{d\mathbf{u}}{dx} |_0^L -
 $$
 $$
-  -51  \int_0^L
+  -4  \int_0^L
 \frac{d}{dx}
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
@@ -107,9 +107,9 @@ $$
 	\end{bmatrix}
 =
 	\begin{bmatrix}
-	  -51 \frac{d\mathbf{u}}{dx}|_i \\
-51\frac{d\mathbf{u}}{dx}|_j
-	\end{bmatrix}   -51 
+	  -4 \frac{d\mathbf{u}}{dx}|_i \\
+4\frac{d\mathbf{u}}{dx}|_j
+	\end{bmatrix}   -4 
 \begin{bmatrix}
 \frac{1}{L}, & -\frac{1}{L} \\
 -\frac{1}{L}, & \frac{1}{L}
@@ -125,9 +125,9 @@ $$
 
 
 $$
- -8  
+ -9  
 \int_0^L \mathbf{W_e} \mathbf{u} dx=
- -8  
+ -9  
 \int_0^L
 \begin{bmatrix}
 	(1-\frac{x}{L}) \\
@@ -140,7 +140,7 @@ $$
 \end{bmatrix}
 dx
 =
- -8  
+ -9  
 \begin{bmatrix}
 \frac{L}{3}, & \frac{L}{6} \\
 \frac{L}{6}, & \frac{L}{3}
@@ -154,7 +154,7 @@ $$
 
 
 $$
-20\int_0^L \mathbf{W_e} d x= 20
+10\int_0^L \mathbf{W_e} d x= 10
 \begin{bmatrix}
 	\frac{L}{2} \\
 	\frac{L}{2}
@@ -166,16 +166,16 @@ $$
 
 $$
 \begin{bmatrix}
-	51\frac{1}{L}    -8 \frac{L}{3}  , &   -51 \frac{1}{L}    -8 \frac{L}{6}   \\
-	  -51  \frac{1}{L}    -8 \frac{L}{6}  , &  51\frac{1}{L}    -8 \frac{L}{3}  
+	4\frac{1}{L}    -9 \frac{L}{3}  , &   -4 \frac{1}{L}    -9 \frac{L}{6}   \\
+	  -4  \frac{1}{L}    -9 \frac{L}{6}  , &  4\frac{1}{L}    -9 \frac{L}{3}  
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
 	u_j
 \end{bmatrix}=
 \begin{bmatrix}
-	  -51 \frac{du}{dx}|_i   +20 \frac{L}{2} \\
-	51\frac{du}{dx}|_j   +20 \frac{L}{2} 
+	  -4 \frac{du}{dx}|_i   +10 \frac{L}{2} \\
+	4\frac{du}{dx}|_j   +10 \frac{L}{2} 
 \end{bmatrix}
 $$
 
@@ -199,9 +199,9 @@ $$
 
 Как и для линейной функции-формы применим метод Галеркина (см. уравнение \ref{lin}) и рассмотрим каждое слагаемое отдельно.
 
-$$51 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
+$$4 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 =
-51\int_0^L
+4\int_0^L
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -213,7 +213,7 @@ $$51 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 $$
 $$
 =
-51
+4
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -221,7 +221,7 @@ $$
 	\frac{9x^3}{2L^3}&-&\frac{9x^2}{2L^2}&-&\frac{x}{L}&&
 \end{bmatrix}
 \frac{d\mathbf{u}}{dx} |_0^L
-  -51  \int_0^L \frac{d}{dx}
+  -4  \int_0^L \frac{d}{dx}
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -233,12 +233,12 @@ $$
 $$
 =
 \begin{bmatrix}
-	  -51 \frac{d\mathbf{u}}{dx}|_i \\
+	  -4 \frac{d\mathbf{u}}{dx}|_i \\
 	0\\
 	0\\
-51\frac{d\mathbf{u}}{dx}|_l
+4\frac{d\mathbf{u}}{dx}|_l
 \end{bmatrix}
-  -51 
+  -4 
 \begin{bmatrix}
 \begin{array}{rrrr}
 	\frac{37}{10L} & -\frac{189}{40} & \frac{27}{20L} & -\frac{13}{40L}\\
@@ -259,9 +259,9 @@ $$
 
 
 $$
- -8   \int_0^L \mathbf{W_e} \mathbf{u} dx
+ -9   \int_0^L \mathbf{W_e} \mathbf{u} dx
 =
- -8   \int_0^L
+ -9   \int_0^L
 \begin{bmatrix}
   -\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
   \frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -273,7 +273,7 @@ $$
 $$
 $$
 =
- -8  
+ -9  
 \begin{bmatrix}
 \begin{array}{rrrr}
 	\frac{8L}{105} 		&  \frac{33L}{560} & -\frac{3L}{140}  &  \frac{119L}{1680}\\
@@ -293,9 +293,9 @@ $$
 
 
 $$
-20 \int_0^L \mathbf{W_e} d x
+10 \int_0^L \mathbf{W_e} d x
 =
-20
+10
 \begin{bmatrix}
 	\frac{L}{8} \\
 	\frac{3L}{8}\\
@@ -310,25 +310,25 @@ $$
 
 $$
 \begin{bmatrix}
-		51\frac{37}{10L}    -8 \frac{8L}{105}   &
-		  -51 \frac{189}{40L}     -8 \frac{33L}{560}   &
-		51\frac{27}{20L}   +8 \frac{3L}{140}   &
-		  -51 \frac{13}{40L}     -8 \frac{119L}{1680}  \\
+		4\frac{37}{10L}    -9 \frac{8L}{105}   &
+		  -4 \frac{189}{40L}     -9 \frac{33L}{560}   &
+		4\frac{27}{20L}   +9 \frac{3L}{140}   &
+		  -4 \frac{13}{40L}     -9 \frac{119L}{1680}  \\
 
-		  -51 \frac{189}{40L}    -8 \frac{33L}{560}   &
-		51\frac{54}{5L}+0  -8 \frac{27L}{170}   &
-		  -51 \frac{297}{40L}   +8 \frac{27L}{560}   &
-		51\frac{27}{20L}    +8 \frac{27L}{560}   \\
+		  -4 \frac{189}{40L}    -9 \frac{33L}{560}   &
+		4\frac{54}{5L}+0  -9 \frac{27L}{170}   &
+		  -4 \frac{297}{40L}   +9 \frac{27L}{560}   &
+		4\frac{27}{20L}    +9 \frac{27L}{560}   \\
 
-		51\frac{27}{20L}     +8 \frac{27L}{560}   &
-		  -51 \frac{297}{40L}   +8 \frac{27L}{560}   &
-		51\frac{54}{5L}+0  -8 \frac{27L}{170}   &
-		  -51 \frac{189}{40L}    -8 \frac{33L}{560}   \\
+		4\frac{27}{20L}     +9 \frac{27L}{560}   &
+		  -4 \frac{297}{40L}   +9 \frac{27L}{560}   &
+		4\frac{54}{5L}+0  -9 \frac{27L}{170}   &
+		  -4 \frac{189}{40L}    -9 \frac{33L}{560}   \\
 
-	      -51 \frac{13}{40L}    -8 \frac{19L}{1680}   &
-		51\frac{27}{20L} \frac{3}{10}  -8 \frac{3L}{140}   &
-		  -51 \frac{189}{40L}   -8 \frac{33L}{560}   &
-		51\frac{37}{10L}    -8 \frac{8L}{105}  
+	      -4 \frac{13}{40L}    -9 \frac{19L}{1680}   &
+		4\frac{27}{20L} \frac{3}{10}  -9 \frac{3L}{140}   &
+		  -4 \frac{189}{40L}   -9 \frac{33L}{560}   &
+		4\frac{37}{10L}    -9 \frac{8L}{105}  
 \end{bmatrix}
 \cdot
 $$
@@ -342,10 +342,10 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-     20\frac{L}{8}    -51 \frac{du}{dx}|_i   \\
-	 20\frac{3L}{8} \\
-	 20\frac{3L}{8} \\
-	 20\frac{L}{8}    +51 \frac{du}{dx}|_l 
+     10\frac{L}{8}    -4 \frac{du}{dx}|_i   \\
+	 10\frac{3L}{8} \\
+	 10\frac{3L}{8} \\
+	 10\frac{L}{8}    +4 \frac{du}{dx}|_l 
 \end{bmatrix}
 \end{align}
 
@@ -364,10 +364,10 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -51  \frac{du}{dx}|_i \\
+b_1   -4  \frac{du}{dx}|_i \\
 b_2\\
 b_3\\
-b_4   +51  \frac{du}{dx}|_l
+b_4   +4  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 Для упрощения расчетов преобразуем систему выше, исключив внутренние узлы. Таким образом СЛАУ (математическая модель кубического КЭ):
@@ -381,8 +381,8 @@ u_i \\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -51  \frac{du}{dx}|_i \\
-b_4   +51  \frac{du}{dx}|_l
+b_1   -4  \frac{du}{dx}|_i \\
+b_4   +4  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 %-------------------------------------------------
@@ -404,8 +404,8 @@ u_i \\
 u_j
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -51  \frac{du}{dx}|_i \\
-b_2   +51  \frac{du}{dx}|_l
+b_1   -4  \frac{du}{dx}|_i \\
+b_2   +4  \frac{du}{dx}|_l
 \end{bmatrix},$$
 
 тогда, при разбитие области на $n$ КЭ, глобальная матрица жесткости  будет иметь размерность $(n+1)\cdot(n+1)$:
@@ -429,13 +429,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
-b_1^1   -51  \frac{du}{dx}|_0 \\
+b_1^1   -4  \frac{du}{dx}|_0 \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
-b_2^n   +51  \frac{du}{dx}|_L
+b_2^n   +4  \frac{du}{dx}|_L
 \end{bmatrix}
 $$
 
@@ -445,13 +445,13 @@ $$
 
 $$
 \begin{bmatrix}
-1     &   0        &   0 & \cdots & 0 & 0 & 0  & 0\\
+ 1     &   0         &   0 & \cdots & 0 & 0 & 0  & 0\\
 a_{21}^1     &    a_{22}^1+a_{11}^2 & a_{12}^2  & 0 & \cdots & 0 & 0  & 0\\
 0     &    a_{21}^2 & a_{22}^2+a_{11}^3  &  a_{12}^3  & 0 & \cdots & 0  & 0\\
 0     &    0  & a_{21}^3  & a_{22}^3+ \cdots  &  & &   & 0\\
 \vdots & \vdots & \vdots & \vdots &  &  &   & \vdots\\
 0 & 0 & 0 & 0 &  0 & 0 & \cdots+a_{11}^n  & a_{12}^n\\
-0 & 0 & 0 & 0 &  0 & 0 & 0 & 1
+0 & 0 & 0 & 0 &  0 & 0 &  a_{21}^n  & a_{22}^n 
 \end{bmatrix}
 \begin{bmatrix}
 u_0 \\
@@ -469,7 +469,7 @@ b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
- b_2^n   +51  \cdot 1   \\
+ b_2^n   +4  \cdot 1   \\
 \end{bmatrix}
 $$
 
@@ -600,12 +600,12 @@ X & Аналитическое & МКЭ-    & Абсолютная \\
 #include <cmath>
 
 double EPS = 1e-16;
-double X_BEGIN = 5.0;
-double X_END = 50.0;
+double X_BEGIN = 2.0;
+double X_END = 14.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 51.0, B = 0.0, C = -8.0, D = 20.0, usl_left = 0.0, usl_right = 1.0; // au"+Bu'+Cu+D=0
+double a = 4.0, B = 0.0, C = -9.0, D = 10.0, usl_left = 0.0, usl_right = 1.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -640,7 +640,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (exp(-2. * sqrt(2./51.) * (x + 5.)) * (exp(2. * sqrt(2./51.) * x) - exp(10. * sqrt(2./51.))) * (-10. * exp(2 * sqrt(2./51.) * x) + sqrt(102) * exp(2. * sqrt(2./51.) * (x + 45.)) + sqrt(102) * exp(100. * sqrt(2./51.)) + 10. * exp(190. * sqrt(2./51.))))/(4. * (1. + exp(60. * sqrt(6./17.))));
+    return (2. * (-3. * exp(21. - (3. * x)/2.) - 5. * exp(39. - (3. * x)/2.) - 5. * exp((3. * x)/2. - 3.) + 3. * exp((3. * x)/2. + 15.) + 5. + 5. * exp(36)))/(9. * (1. + exp(36)));
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -678,21 +678,15 @@ std::vector<double> build_linear_solution(size_t elems_num) {
     }
 
     // Учет ГУ
-    if ( 0 == 1 ) {
-        b.at(0) =  D * L /2. - a*usl_left;
-    } else {
+    
         b.at(0) = usl_left;
         A.at(0).at(0) = 1;
         A.at(0).at(1) = 0;
-    }
+    
 
-    if ( 1 == 1 ) {
+    
         b.at(size - 1) =  D * L /2. + a*usl_right;
-    } else {
-        b.at(size - 1) = usl_right;
-        A.at(size - 1).at(size - 1) = 1;
-        A.at(size - 1).at(size - 2) = 0;
-    }
+    
 
     // Решение полученной СЛАУ методом Гаусса
     std::vector<double> res = solve_with_gauss(A, b);
@@ -804,50 +798,35 @@ int main() {
         y = build_cube_solution(ELEMS_NUM);
     }
      std::vector<double> y_real = build_analytical_solution(x);
-    
 
      FILE* gp;
      FILE* ab;
      FILE* pgr;
      FILE* tab;
-     if (true) {
-        if(ELEMS_NUM == 20) {
-            gp = fopen("res/labs/text/graph/lin_20.txt", "w");
-            ab = fopen("res/labs/text/graph/abs.txt", "w");
-            for (size_t i = 0; i < x_size; i++) {
-                fprintf(ab, "%lf %lf\n", x.at(i), y_real.at(i));
-            }
-            pgr = fopen("res/labs/text/pgr/lin_20.txt", "w");
-            tab = fopen("res/labs/text/tab/lin_20.txt", "w");
-        }
-        if(ELEMS_NUM == 40) {
-            gp = fopen("res/labs/text/graph/lin_40.txt", "w");
-            pgr = fopen("res/labs/text/pgr/lin_40.txt", "w");
-            tab = fopen("res/labs/text/tab/lin_40.txt", "w");
-        }
-     } else {
-        if(ELEMS_NUM == 20) {
-            gp = fopen("res/labs/text/graph/cub_20.txt", "w");
-            pgr = fopen("res/labs/text/pgr/cub_20.txt", "w");
-            tab = fopen("res/labs/text/tab/cub_20.txt", "w");
-        }
-        if(ELEMS_NUM == 40) {
-            gp = fopen("res/labs/text/graph/cub_40.txt", "w");
-            pgr = fopen("res/labs/text/pgr/cub_40.txt", "w");
-            tab = fopen("res/labs/text/tab/cub_40.txt", "w");
-        }
-     }
+     
+        
+    gp = fopen("res/labs/text/graph/lin_20.txt", "w");
+    ab = fopen("res/labs/text/graph/abs.txt", "w");
+    for (size_t i = 0; i < x_size; i++) {
+        fprintf(ab, "%lf %lf\n", x.at(i), y_real.at(i));
+        printf("%lf %lf\n", x.at(i), y_real.at(i));
+    }
+    pgr = fopen("res/labs/text/pgr/lin_20.txt", "w");
+    tab = fopen("res/labs/text/tab/lin_20.txt", "w");
+        
+     
 
      for (size_t i = 0; i < x.size()-1; i++) {
-        fprintf(tab, "%le & %le & %le & %le \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
+        fprintf(tab, "%f & %le & %le & %le \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
      }
-     fprintf(tab, "%le & %le & %le & %le", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
+     fprintf(tab, "%f & %le & %le & %le", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
 
      for (size_t i = 0; i < x_size; i++) {
          fprintf(gp, "%lf %lf\n", x.at(i), y.at(i));
      }
 
      fprintf(pgr, "%e", calc_abs_error(y_real, y));
+
      fclose(gp);
      fclose(ab);
      fclose(pgr);
@@ -867,11 +846,11 @@ int main() {
 \labattributes{}{}{}{}{студент группы \EduGroup, \Author}{\Year, \Semestr}
 %--------------
 
-%   +51 
-%   -51 
+%   +4 
+%   -4 
 
 %  
 %  
 
-%   +20 
-%   -20 
+%   +10 
+%   -10 

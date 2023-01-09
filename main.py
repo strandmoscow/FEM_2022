@@ -3,27 +3,27 @@ import numpy as np
 from jinja2 import Environment, FileSystemLoader
 import matplotlib.pyplot as plt
 
-author_name="{Кулагин Арсений Олегович}"
-author_name_short="{Кулагин А.О.}"
-group="{РК6-73б}"
-variant="{54}"
+author_name="{Стройков Марк Николаевич}"
+author_name_short="{Стройков М.Н.}"
+group="{РК6-72б}"
+variant="{38}"
 
-a = 51.0
+a = 4.0
 b = 0.0
-c = -8.0
-d = 20.0
+c = -9.0
+d = 10.0
 
-min_int = 5.0
+min_int = 2.0
 min_cond_type = 0
 min_value = 0.0
 
-max_int = 50.0
+max_int = 14.0
 max_cond_type = 1
 max_value = 1.0
 
 
-an_sol_for_c = "(exp(-2. * sqrt(2./51.) * (x + 5.)) * (exp(2. * sqrt(2./51.) * x) - exp(10. * sqrt(2./51.))) * (-10. * exp(2 * sqrt(2./51.) * x) + sqrt(102) * exp(2. * sqrt(2./51.) * (x + 45.)) + sqrt(102) * exp(100. * sqrt(2./51.)) + 10. * exp(190. * sqrt(2./51.))))/(4. * (1. + exp(60. * sqrt(6./17.))))"
-analytical_solution = "\\frac{ e^{-2 \\sqrt{2 / 51}(x+5)}\\left(e^{2 \\sqrt{2 / 51} x}-e^{10 \\sqrt{2 / 51}}\\right)\\left(-10 e^{2 \\sqrt{2 / 51} x}+\\sqrt{102} e^{2 \\sqrt{2 / 51}(x+45)}+\\sqrt{102} e^{100 \\sqrt{2 / 51}}+10 e^{190 \\sqrt{2 / 51}}\\right)}{4\\left(1+e^{60 \\sqrt{6 / 17}}\\right)}"
+an_sol_for_c = "(2. * (-3. * exp(21. - (3. * x)/2.) - 5. * exp(39. - (3. * x)/2.) - 5. * exp((3. * x)/2. - 3.) + 3. * exp((3. * x)/2. + 15.) + 5. + 5. * exp(36)))/(9. * (1. + exp(36)))"
+analytical_solution = "\\frac{2\\left(-3 e^{21-(3 x) / 2}-5 e^{39-(3 x) / 2}-5 e^{(3 x) / 2-3}+3 e^{(3 x) / 2+15}+5+5 e^{36}\\right)}{9\left(1+e^{36}\\right)}"
 
 
 # Jinja init
