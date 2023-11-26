@@ -6,17 +6,17 @@
 
 Решить с помощью МКЭ уравнение \ref{usl}
 \begin{align}\label{usl}
-17\frac{d^2u}{dx^2}
- -4 \frac{du}{dx}  
- + 15 
+22\frac{d^2u}{dx^2}
+ -37 \frac{du}{dx}  
+ + 12 
 =0,
 \end{align}
 при следующих граничных условиях (г. у.): 
 \begin{align}\label{2_rod}
-    u'(x=-3) = 5,
+    u'(x=3) = 5,
 \end{align}
 \begin{align}\label{1_rod}
-    u(x=8) = 4.
+    u(x=9) = 10.
 \end{align}
 
 Количество конечных элементов
@@ -46,7 +46,7 @@
 
 Таким образом, получаем:
 $$
-u(x)=\frac{1}{16}\left(60 x+85 e^{(4(x+3)) / 17}-85 e^{44 / 17}-416\right).
+u(x)=y(x)=rac{2\left(222 x+1903 e^{(37(x-3)) / 22}-1903 e^{111 / 11}+4847ight)}{1369}).
 $$
 
 
@@ -70,21 +70,21 @@ $$
 
 В соответствии с методом Галеркина для уравнения \ref{usl}:
 \begin{equation}\label{lin}
-\int_0^L \mathbf{W_e}\left( 17\frac{d^2\mathbf{u}}{dx^2} -4  \frac{d\mathbf{u}}{dx}  +15 \right) d x=0,
+\int_0^L \mathbf{W_e}\left( 22\frac{d^2\mathbf{u}}{dx^2} -37  \frac{d\mathbf{u}}{dx}  +12 \right) d x=0,
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left(17\frac{d^2\mathbf{u}}{dx^2} -4  \frac{du}{dx}  +15 \right) d x= 17\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx  -4   \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x   +15 \int_0^L \mathbf{W_e} d x=0$$
+$$\int_0^L \mathbf{W_e}\left(22\frac{d^2\mathbf{u}}{dx^2} -37  \frac{du}{dx}  +12 \right) d x= 22\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx  -37   \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x   +12 \int_0^L \mathbf{W_e} d x=0$$
 
 Распишем каждое слагаемое отдельно:
 $$
-17\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=17\int_0^L
+22\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=22\int_0^L
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
 	\end{bmatrix}
 \frac{d^2 \mathbf{u}}{dx^2} dx =
-17
+22
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
@@ -92,7 +92,7 @@ $$
 \frac{d\mathbf{u}}{dx} |_0^L -
 $$
 $$
-  -17  \int_0^L
+  -22  \int_0^L
 \frac{d}{dx}
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
@@ -108,9 +108,9 @@ $$
 	\end{bmatrix}
 =
 	\begin{bmatrix}
-	  -17 \frac{d\mathbf{u}}{dx}|_i \\
-17\frac{d\mathbf{u}}{dx}|_j
-	\end{bmatrix}   -17 
+	  -22 \frac{d\mathbf{u}}{dx}|_i \\
+22\frac{d\mathbf{u}}{dx}|_j
+	\end{bmatrix}   -22 
 \begin{bmatrix}
 \frac{1}{L}, & -\frac{1}{L} \\
 -\frac{1}{L}, & \frac{1}{L}
@@ -122,7 +122,7 @@ u_j
 $$
 
 $$
- -4  \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx= -4  \int_0^L
+ -37  \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx= -37  \int_0^L
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
@@ -137,7 +137,7 @@ dx
 $$
 $$
 =
--\frac{4}{L}  
+-\frac{37}{L}  
 \int_0^L
 \begin{bmatrix}
 	(1-\frac{x}{L}) & (-1+\frac{x}{L})\\
@@ -148,7 +148,7 @@ $$
 	u_j
 \end{bmatrix}
 =
- -4  
+ -37  
 \begin{bmatrix}
 -\frac{1}{2}, & \frac{1}{2} \\
 -\frac{1}{2}, & \frac{1}{2}
@@ -159,7 +159,7 @@ u_j
 \end{bmatrix}
 $$
 
-$$15\int_0^L \mathbf{W_e} d x= 15
+$$12\int_0^L \mathbf{W_e} d x= 12
 \begin{bmatrix}
 	\frac{L}{2} \\
 	\frac{L}{2}
@@ -170,16 +170,16 @@ $$
 
 $$
 \begin{bmatrix}
-	17\frac{1}{L}  -4   \frac{1}{2}, &   -17 \frac{1}{L}  +4   \frac{1}{2} \\
-	  -17  \frac{1}{L} -4   \frac{1}{2}, &  17\frac{1}{L}  +4   \frac{1}{2}
+	22\frac{1}{L}  -37   \frac{1}{2}, &   -22 \frac{1}{L}  +37   \frac{1}{2} \\
+	  -22  \frac{1}{L} -37   \frac{1}{2}, &  22\frac{1}{L}  +37   \frac{1}{2}
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
 	u_j
 \end{bmatrix}=
 \begin{bmatrix}
-	  -17 \frac{du}{dx}|_i   +15  \frac{L}{2}\\
-	17\frac{du}{dx}|_j   +15  \frac{L}{2}
+	  -22 \frac{du}{dx}|_i   +12  \frac{L}{2}\\
+	22\frac{du}{dx}|_j   +12  \frac{L}{2}
 \end{bmatrix}
 $$
 
@@ -203,9 +203,9 @@ $$
 
 Как и для линейной функции-формы применим метод Галеркина (см. уравнение \ref{lin}) и рассмотрим каждое слагаемое отдельно.
 
-$$17 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
+$$22 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 =
-17\int_0^L
+22\int_0^L
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -217,7 +217,7 @@ $$17 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 $$
 $$
 =
-17
+22
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -225,7 +225,7 @@ $$
 	\frac{9x^3}{2L^3}&-&\frac{9x^2}{2L^2}&-&\frac{x}{L}&&
 \end{bmatrix}
 \frac{d\mathbf{u}}{dx} |_0^L
-  -17  \int_0^L \frac{d}{dx}
+  -22  \int_0^L \frac{d}{dx}
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -237,12 +237,12 @@ $$
 $$
 =
 \begin{bmatrix}
-	  -17 \frac{d\mathbf{u}}{dx}|_i \\
+	  -22 \frac{d\mathbf{u}}{dx}|_i \\
 	0\\
 	0\\
-17\frac{d\mathbf{u}}{dx}|_l
+22\frac{d\mathbf{u}}{dx}|_l
 \end{bmatrix}
-  -17 
+  -22 
 \begin{bmatrix}
 \begin{array}{rrrr}
 	\frac{37}{10L} & -\frac{189}{40} & \frac{27}{20L} & -\frac{13}{40L}\\
@@ -260,9 +260,9 @@ u_l
 $$
 
 $$
- -4   \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx
+ -37   \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx
 =
- -4  \int_0^L
+ -37  \int_0^L
 \begin{bmatrix}
   -\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
   \frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -274,7 +274,7 @@ $$
 $$
 $$
 =
- -4  
+ -37  
 \begin{bmatrix}
 \begin{array}{rrrr}
 	-\frac{1}{2} & \frac{57}{80} & -\frac{3}{10} & \frac{7}{80}\\
@@ -292,9 +292,9 @@ $$
 $$
 
 $$
-15 \int_0^L \mathbf{W_e} d x
+12 \int_0^L \mathbf{W_e} d x
 =
-15
+12
 \begin{bmatrix}
 	\frac{L}{8} \\
 	\frac{3L}{8}\\
@@ -307,10 +307,10 @@ $$
 Таким образом, для уравнения \ref{lin}, при использовании кубической функции-формы,  получаем:
 
 \begin{align}\label{cub}
-\begin{bmatrix}17\frac{37}{10L} -4  \frac{1}{2} &   -17 \frac{189}{40L} +4  \frac{57}{80} & 17\frac{27}{20L} -4  \frac{3}{10} &   -17 \frac{13}{40L}  +4   \frac{7}{80}\\
-	  -17 \frac{189}{40L}  -4  \frac{57}{80} & 17\frac{54}{5L}+0 &   -17 \frac{297}{40L} +4  \frac{81}{80} & 17\frac{27}{20L}  -4  \frac{3}{10} \\
-	17\frac{27}{20L}  +4   \frac{3}{10} &   -17 \frac{297}{40L} -4  \frac{81}{80} & 17\frac{54}{5L}+0 &   -17 \frac{189}{40L}  +4  \frac{57}{80} \\
-	  -17 \frac{13}{40L}  -4  \frac{7}{80} & 17\frac{27}{20L} +4  \frac{3}{10} &   -17 \frac{189}{40L} +4  \frac{57}{80} & 17\frac{37}{10L}  +4  \frac{1}{2}
+\begin{bmatrix}22\frac{37}{10L} -37  \frac{1}{2} &   -22 \frac{189}{40L} +37  \frac{57}{80} & 22\frac{27}{20L} -37  \frac{3}{10} &   -22 \frac{13}{40L}  +37   \frac{7}{80}\\
+	  -22 \frac{189}{40L}  -37  \frac{57}{80} & 22\frac{54}{5L}+0 &   -22 \frac{297}{40L} +37  \frac{81}{80} & 22\frac{27}{20L}  -37  \frac{3}{10} \\
+	22\frac{27}{20L}  +37   \frac{3}{10} &   -22 \frac{297}{40L} -37  \frac{81}{80} & 22\frac{54}{5L}+0 &   -22 \frac{189}{40L}  +37  \frac{57}{80} \\
+	  -22 \frac{13}{40L}  -37  \frac{7}{80} & 22\frac{27}{20L} +37  \frac{3}{10} &   -22 \frac{189}{40L} +37  \frac{57}{80} & 22\frac{37}{10L}  +37  \frac{1}{2}
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
@@ -320,10 +320,10 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-    15\frac{L}{8}   -17  \frac{du}{dx}|_i \\
-	15\frac{3L}{8}\\
-	15\frac{3L}{8}\\
-	15\frac{L}{8}   +17  \frac{du}{dx}|_l
+    12\frac{L}{8}   -22  \frac{du}{dx}|_i \\
+	12\frac{3L}{8}\\
+	12\frac{3L}{8}\\
+	12\frac{L}{8}   +22  \frac{du}{dx}|_l
 \end{bmatrix}
 \end{align}
 
@@ -342,10 +342,10 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -17  \frac{du}{dx}|_i \\
+b_1   -22  \frac{du}{dx}|_i \\
 b_2\\
 b_3\\
-b_4   +17  \frac{du}{dx}|_l
+b_4   +22  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 Для упрощения расчетов преобразуем систему выше, исключив внутренние узлы. Таким образом СЛАУ (математическая модель кубического КЭ):
@@ -359,8 +359,8 @@ u_i \\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -17  \frac{du}{dx}|_i \\
-b_4   +17  \frac{du}{dx}|_l
+b_1   -22  \frac{du}{dx}|_i \\
+b_4   +22  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 %-------------------------------------------------
@@ -382,8 +382,8 @@ u_i \\
 u_j
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -17  \frac{du}{dx}|_i \\
-b_2   +17  \frac{du}{dx}|_l
+b_1   -22  \frac{du}{dx}|_i \\
+b_2   +22  \frac{du}{dx}|_l
 \end{bmatrix},$$
 
 тогда, при разбитие области на $n$ КЭ, глобальная матрица жесткости  будет иметь размерность $(n+1)\cdot(n+1)$:
@@ -407,13 +407,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
-b_1^1   -17  \frac{du}{dx}|_0 \\
+b_1^1   -22  \frac{du}{dx}|_0 \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
-b_2^n   +17  \frac{du}{dx}|_L
+b_2^n   +22  \frac{du}{dx}|_L
 \end{bmatrix}
 $$
 
@@ -441,13 +441,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
- b_1^1   -17  \cdot 5   \\
+ b_1^1   -22  \cdot 5   \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
- 4   \\
+ 10   \\
 \end{bmatrix}
 $$
 
@@ -578,12 +578,12 @@ X & Аналитическое & МКЭ-    & Абсолютная \\
 #include <cmath>
 
 double EPS = 1e-16;
-double X_BEGIN = -3.0;
-double X_END = 8.0;
+double X_BEGIN = 3.0;
+double X_END = 9.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 17.0, B = -4.0, C = 0.0, D = 15.0, usl_left = 5.0, usl_right = 4.0; // au"+Bu'+Cu+D=0
+double a = 22.0, B = -37.0, C = 0.0, D = 12.0, usl_left = 5.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -618,7 +618,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (60. * x + 85. * exp(4. * (x + 3.) / 17.) - 85. * exp(44. / 17.) - 416.) / 16.;
+    return 2. * (222. * x + 1903. * exp(37. * (x - 3.) / 22.) - 1903. * exp(111./11.) + 4847.) / 1369.;
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -845,11 +845,11 @@ int main() {
 \labattributes{}{}{}{}{студент группы \EduGroup, \Author}{\Year, \Semestr}
 %--------------
 
-%   +17 
-%   -17 
+%   +22 
+%   -22 
 
-%  -4  
-%  +4  
+%  -37  
+%  +37  
 
-%   +15 
-%   -15 
+%   +12 
+%   -12 

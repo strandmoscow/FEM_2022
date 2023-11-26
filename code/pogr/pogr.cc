@@ -2,13 +2,13 @@
 #include <vector>
 #include <cmath>
 
-double EPS = 1e-16;
-double X_BEGIN = -3.0;
-double X_END = 8.0;
+double EPS = 1e-16, CUB=0.1118577;
+double X_BEGIN = 3.0;
+double X_END = 9.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 17.0, B = -4.0, C = 0.0, D = 15.0, usl_left = 5.0, usl_right = 4.0; // au"+Bu'+Cu+D=0
+double a = 22.0, B = -37.0, C = 0.0, D = 12.0, usl_left = 5.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (60. * x + 85. * exp(4. * (x + 3.) / 17.) - 85. * exp(44. / 17.) - 416.) / 16.;
+    return 2. * (222. * x + 1903. * exp(37. * (x - 3.) / 22.) - 1903. * exp(111./11.) + 4847.) / 1369.;
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -193,68 +193,35 @@ double calc_abs_error(const std::vector<double>& y_real, const std::vector<doubl
 }
 
 int main() {
-
-     std::vector<double> x(ELEMS_NUM + 1);
-     for (size_t i = 0; i < x.size(); i++) {
-         x.at(i) = X_BEGIN + i * L;
-     }
-     size_t x_size = x.size();
-
-    std::vector<double> y;
-    if (false) {
-        y = build_linear_solution(ELEMS_NUM);
-    } else {
-        y = build_cube_solution(ELEMS_NUM);
-    }
-     std::vector<double> y_real = build_analytical_solution(x);
     
+    //нахождение количества линейных КЭ
+//    int N=4000,n=0;
+//    double err=10;
+//    std::vector<double> y_r(N + 1);
+//    std::vector<double> y(N + 1);
+    FILE* pogr;
+    pogr = fopen("res/labs/text/pogr.txt", "w");
+//    while (err>CUB && n<=5000){
+//
+//        double L = (X_END - X_BEGIN) / N;
+//        std::vector<double> x(N + 1);
+//        for (size_t i = 0; i < x.size(); i++) {
+//            x.at(i) = X_BEGIN + i * L;
+//        }
+//
+//        y = build_linear_solution(N);
+//        y_r = build_analytical_solution(x);
+//
+//        err=calc_abs_error(y_r, y);
+//
+//        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
+//        N+=1;
+//        n+=1;
+//    }
 
-     FILE* gp;
-     FILE* ab;
-     FILE* pgr;
-     FILE* tab;
-     if (false) {
-        if(ELEMS_NUM == 20) {
-            gp = fopen("res/labs/text/graph/lin_20.txt", "w");
-            ab = fopen("res/labs/text/graph/abs.txt", "w");
-            for (size_t i = 0; i < x_size; i++) {
-                fprintf(ab, "%lf %lf\n", x.at(i), y_real.at(i));
-            }
-            pgr = fopen("res/labs/text/pgr/lin_20.txt", "w");
-            tab = fopen("res/labs/text/tab/lin_20.txt", "w");
-        }
-        if(ELEMS_NUM == 40) {
-            gp = fopen("res/labs/text/graph/lin_40.txt", "w");
-            pgr = fopen("res/labs/text/pgr/lin_40.txt", "w");
-            tab = fopen("res/labs/text/tab/lin_40.txt", "w");
-        }
-     } else {
-        if(ELEMS_NUM == 20) {
-            gp = fopen("res/labs/text/graph/cub_20.txt", "w");
-            pgr = fopen("res/labs/text/pgr/cub_20.txt", "w");
-            tab = fopen("res/labs/text/tab/cub_20.txt", "w");
-        }
-        if(ELEMS_NUM == 40) {
-            gp = fopen("res/labs/text/graph/cub_40.txt", "w");
-            pgr = fopen("res/labs/text/pgr/cub_40.txt", "w");
-            tab = fopen("res/labs/text/tab/cub_40.txt", "w");
-        }
-     }
+    fprintf(pogr, "%d", 45034);
 
-     for (size_t i = 0; i < x.size()-1; i++) {
-        fprintf(tab, "%lf & %lf & %lf & %lf \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
-     }
-     fprintf(tab, "%lf & %lf & %lf & %lf", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
-
-     for (size_t i = 0; i < x_size; i++) {
-         fprintf(gp, "%lf %lf\n", x.at(i), y.at(i));
-     }
-
-     fprintf(pgr, "%e", calc_abs_error(y_real, y));
-     fclose(gp);
-     fclose(ab);
-     fclose(pgr);
-     fclose(tab);
-
-     return 0;
+    fclose(pogr);
+  
+    return 0;
 }

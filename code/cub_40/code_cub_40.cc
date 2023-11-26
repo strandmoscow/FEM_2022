@@ -3,12 +3,12 @@
 #include <cmath>
 
 double EPS = 1e-16;
-double X_BEGIN = -3.0;
-double X_END = 8.0;
-size_t ELEMS_NUM = 20;
+double X_BEGIN = 3.0;
+double X_END = 9.0;
+size_t ELEMS_NUM = 40;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 17.0, B = -4.0, C = 0.0, D = 15.0, usl_left = 5.0, usl_right = 4.0; // au"+Bu'+Cu+D=0
+double a = 22.0, B = -37.0, C = 0.0, D = 12.0, usl_left = 5.0, usl_right = 10.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (60. * x + 85. * exp(4. * (x + 3.) / 17.) - 85. * exp(44. / 17.) - 416.) / 16.;
+    return 2. * (222. * x + 1903. * exp(37. * (x - 3.) / 22.) - 1903. * exp(111./11.) + 4847.) / 1369.;
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -201,7 +201,7 @@ int main() {
      size_t x_size = x.size();
 
     std::vector<double> y;
-    if (true) {
+    if (false) {
         y = build_linear_solution(ELEMS_NUM);
     } else {
         y = build_cube_solution(ELEMS_NUM);
@@ -213,7 +213,7 @@ int main() {
      FILE* ab;
      FILE* pgr;
      FILE* tab;
-     if (true) {
+     if (false) {
         if(ELEMS_NUM == 20) {
             gp = fopen("res/labs/text/graph/lin_20.txt", "w");
             ab = fopen("res/labs/text/graph/abs.txt", "w");
