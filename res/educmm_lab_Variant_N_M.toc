@@ -14,4 +14,4 @@
 \contentsline {subsubsection}{Кубическая функция-формы}{11}{section*.12}%
 \contentsline {subsubsection}{Нахождение количества линейных КЭ, обеспечивающих ту же точность, что и 20 кубических}{14}{section*.16}%
 \contentsline {subsection}{\numberline {7}Код}{14}{subsection.0.7}%
-\contentsline {subsection}{\numberline {8}Вывод}{20}{subsection.0.8}%
+\contentsline {subsection}{\numberline {8}Вывод}{21}{subsection.0.8}%

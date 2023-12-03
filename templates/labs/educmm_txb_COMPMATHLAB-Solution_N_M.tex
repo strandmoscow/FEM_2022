@@ -6,9 +6,7 @@
 
 Решить с помощью МКЭ уравнение \ref{usl}
 \begin{align}\label{usl}
-{{ a_int }}\frac{d^2u}{dx^2}
-{% if b_int < 0 %} -{{ b_abs }} \frac{du}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{du}{dx} {% endif %}
-{% if d_int > 0 %} + {{ d_int }} {% else %} {{ d_int }} {% endif %}
+{{ a_int }}\frac{d^2u}{dx^2} {% if b_int < 0 %} -{{ b_abs }} \frac{du}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{du}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} +{{ c_abs }} {% endif %} u {% if d_int > 0 %} + {{ d_int }} {% else %} {{ d_int }} {% endif %}
 =0,
 \end{align}
 при следующих граничных условиях (г. у.): 
