@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  3 DEC 2023 23:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  3 DEC 2023 23:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1454,27 +1454,12 @@ toc)
 /fonts/enc/dvips/mnsymbol/MnSymbolD.enc}{d:/texlive/2023/texmf-dist/fonts/enc/d
 vips/mnsymbol/MnSymbolE.enc}{d:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}]
-<labs/img/img1.png, id=132, 801.99625pt x 596.2275pt>
+<labs/img/img1.png, id=132, 793.96625pt x 644.4075pt>
 File: labs/img/img1.png Graphic file (type png)
 <use labs/img/img1.png>
 Package pdftex.def Info: labs/img/img1.png  used on input line 39.
-(pdftex.def)             Requested size: 400.99713pt x 298.11302pt.
-
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:47: Package amsmat
-h Error: \begin{multline} allowed only in paragraph mode.
-
-See the amsmath package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.47 u(x)=\begin{multline}
-                          \frac{1}{15\left(1+e^{22 \sqrt{15}}\right)} \\ e^{...
-
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[4 <D:/FEM_2022/res/labs/img/img1.png>]
+(pdftex.def)             Requested size: 396.98215pt x 322.20296pt.
+ [4 <D:/FEM_2022/res/labs/img/img1.png>]
 D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:138: Missing $ ins
 erted.
 <inserted text> 
@@ -1651,12 +1636,12 @@ The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
 [6] [7]
-<labs/img/lin/20.png, id=172, 462.528pt x 346.896pt>
+<labs/img/lin/20.png, id=173, 462.528pt x 346.896pt>
 File: labs/img/lin/20.png Graphic file (type png)
 <use labs/img/lin/20.png>
 Package pdftex.def Info: labs/img/lin/20.png  used on input line 465.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
-<labs/img/lin/40.png, id=173, 462.528pt x 346.896pt>
+<labs/img/lin/40.png, id=174, 462.528pt x 346.896pt>
 File: labs/img/lin/40.png Graphic file (type png)
 <use labs/img/lin/40.png>
 Package pdftex.def Info: labs/img/lin/40.png  used on input line 471.
@@ -1669,12 +1654,12 @@ Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 
 [10] (D:/FEM_2022/res/labs/text/pgr/lin_20.txt)
 (D:/FEM_2022/res/labs/text/pgr/lin_40.txt)
-<labs/img/cub/20.png, id=193, 462.528pt x 346.896pt>
+<labs/img/cub/20.png, id=194, 462.528pt x 346.896pt>
 File: labs/img/cub/20.png Graphic file (type png)
 <use labs/img/cub/20.png>
 Package pdftex.def Info: labs/img/cub/20.png  used on input line 515.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
-<labs/img/cub/40.png, id=194, 462.528pt x 346.896pt>
+<labs/img/cub/40.png, id=195, 462.528pt x 346.896pt>
 File: labs/img/cub/40.png Graphic file (type png)
 <use labs/img/cub/40.png>
 Package pdftex.def Info: labs/img/cub/40.png  used on input line 521.
@@ -1688,7 +1673,7 @@ Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 
 [13] (D:/FEM_2022/res/labs/text/pgr/cub_20.txt)
 (D:/FEM_2022/res/labs/text/pgr/cub_40.txt)
-<labs/img/img2.pdf, id=214, 186.6975pt x 378.45387pt>
+<labs/img/img2.pdf, id=215, 186.6975pt x 378.45387pt>
 File: labs/img/img2.pdf Graphic file (type pdf)
 <use labs/img/img2.pdf>
 Package pdftex.def Info: labs/img/img2.pdf  used on input line 563.
@@ -1746,7 +1731,7 @@ Package rerunfilecheck Info: File `educmm_lab_Variant_N_M.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  35708 strings out of 474266
- 663452 string characters out of 5751443
+ 663450 string characters out of 5751443
  2047558 words of memory out of 5000000
  56850 multiletter control sequences out of 15000+600000
  598344 words of font info for 147 fonts, out of 8000000 for 9000
@@ -1773,11 +1758,11 @@ texmf-dist/fonts/type1/public/cm-super/sfsi1095.pfb><d:/texlive/2023/texmf-dist
 e1/public/cm-super/sfsx1095.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/
 cm-super/sfti1095.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/s
 fti1200.pfb>
-Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (21 pages, 1250360
+Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (21 pages, 1162423
  bytes).
 PDF statistics:
- 692 PDF objects out of 1000 (max. 8388607)
- 612 compressed objects within 7 object streams
+ 694 PDF objects out of 1000 (max. 8388607)
+ 614 compressed objects within 7 object streams
  318 named destinations out of 1000 (max. 500000)
  192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
