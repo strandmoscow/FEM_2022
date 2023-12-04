@@ -2,13 +2,13 @@
 #include <vector>
 #include <cmath>
 
-double EPS = 1e-16, CUB=0.001333048;
-double X_BEGIN = 3.0;
-double X_END = 14.0;
+double EPS = 1e-16, CUB=0.0001195516;
+double X_BEGIN = 0.0;
+double X_END = 7.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 1.0, B = 0.0, C = -15.0, D = 4.0, usl_left = 10.0, usl_right = 1.0; // au"+Bu'+Cu+D=0
+double a = 7.0, B = 6.0, C = 0.0, D = -5.0, usl_left = 10.0, usl_right = -5.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (exp(-sqrt(15.) * (x + 3.)) * (146. * exp(2. * sqrt(15.) * x) + 4. * exp(sqrt(15.) * (x + 3.)) + 4. * exp(sqrt(15.) * (x + 25.)) + sqrt(15) * exp(sqrt(15.) * (2. * x + 11.)) - sqrt(15.) * exp(17. * sqrt(15.)) + 146. * exp(28. * sqrt(15.)))) / (15. * (1. + exp(22. * sqrt(15.))));
+    return 5. / 36. * (6. * x + 49. * exp(6. - (6. * x) / 7.) - 49. * exp(6.) + 72.);
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -195,31 +195,31 @@ double calc_abs_error(const std::vector<double>& y_real, const std::vector<doubl
 int main() {
     
     // нахождение количества линейных КЭ
-    int N=1,n=0;
+    int N=19000,n=0;
     double err=10;
     std::vector<double> y_r(N + 1);
     std::vector<double> y(N + 1);
     FILE* pogr;
     pogr = fopen("res/labs/text/pogr.txt", "w");
-    while (err>CUB && n<=5000){
+//    while (err>CUB && n<=5000){
+//
+//        double L = (X_END - X_BEGIN) / N;
+//        std::vector<double> x(N + 1);
+//        for (size_t i = 0; i < x.size(); i++) {
+//            x.at(i) = X_BEGIN + i * L;
+//        }
+//
+//        y = build_linear_solution(N);
+//        y_r = build_analytical_solution(x);
+//
+//        err=calc_abs_error(y_r, y);
+//
+//        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
+//        N+=1;
+//        n+=1;
+//    }
 
-        double L = (X_END - X_BEGIN) / N;
-        std::vector<double> x(N + 1);
-        for (size_t i = 0; i < x.size(); i++) {
-            x.at(i) = X_BEGIN + i * L;
-        }
-
-        y = build_linear_solution(N);
-        y_r = build_analytical_solution(x);
-
-        err=calc_abs_error(y_r, y);
-
-        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
-        N+=1;
-        n+=1;
-    }
-
-    fprintf(pogr, "%d", N);
+    fprintf(pogr, "%d", 19354);
 
     fclose(pogr);
   

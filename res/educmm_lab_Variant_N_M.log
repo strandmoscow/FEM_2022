@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  3 DEC 2023 23:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  4 DEC 2023 00:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1429,6 +1429,11 @@ Overfull \hbox (23.99998pt too wide) in paragraph at lines 15--27
  []
 
 <<t2a.cmap>>
+Overfull \hbox (9.1361pt too wide) in paragraph at lines 60--61
+ []|[]| 
+ []
+
+
 Overfull \hbox (12.80959pt too wide) in paragraph at lines 58--64
  [][] 
  []
@@ -1454,188 +1459,13 @@ toc)
 /fonts/enc/dvips/mnsymbol/MnSymbolD.enc}{d:/texlive/2023/texmf-dist/fonts/enc/d
 vips/mnsymbol/MnSymbolE.enc}{d:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}]
-<labs/img/img1.png, id=132, 793.96625pt x 644.4075pt>
+<labs/img/img1.png, id=132, 795.97375pt x 554.07pt>
 File: labs/img/img1.png Graphic file (type png)
 <use labs/img/img1.png>
 Package pdftex.def Info: labs/img/img1.png  used on input line 39.
-(pdftex.def)             Requested size: 396.98215pt x 322.20296pt.
- [4 <D:/FEM_2022/res/labs/img/img1.png>]
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:138: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.138 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:138: Display math 
-should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.138 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:139: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.139 \int
-          _0^L
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:149: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.149 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:150: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.150 \begin{bmatrix}
-                     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:153: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.153 \end{bmatrix}
-                   
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:154: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.154 \begin{bmatrix}
-                     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:157: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.157 \end{bmatrix}
-                   
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:159: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.159 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:159: Display math 
-should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.159 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-[5{d:/texlive/2023/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolF.enc}]
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:275: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.275 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:275: Display math 
-should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.275 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:276: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.276 \begin{bmatrix}
-                     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:283: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.283 \end{bmatrix}
-                   
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:284: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.284 \begin{bmatrix}
-                     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:289: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.289 \end{bmatrix}
-                   
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:291: Missing $ ins
-erted.
-<inserted text> 
-                $
-l.291 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:291: Display math 
-should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.291 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-[6] [7]
+(pdftex.def)             Requested size: 397.9859pt x 277.03432pt.
+ [4 <D:/FEM_2022/res/labs/img/img1.png>] [5{d:/texlive/2023/texmf-dist/fonts/en
+c/dvips/mnsymbol/MnSymbolF.enc}] [6] [7]
 <labs/img/lin/20.png, id=173, 462.528pt x 346.896pt>
 File: labs/img/lin/20.png Graphic file (type png)
 <use labs/img/lin/20.png>
@@ -1646,8 +1476,9 @@ File: labs/img/lin/40.png Graphic file (type png)
 <use labs/img/lin/40.png>
 Package pdftex.def Info: labs/img/lin/40.png  used on input line 471.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
- (D:/FEM_2022/res/labs/text/tab/lin_20.txt) [8 <D:/FEM_2022/res/labs/img/lin/20
-.png> <D:/FEM_2022/res/labs/img/lin/40.png>]
+
+(D:/FEM_2022/res/labs/text/tab/lin_20.txt) [8 <D:/FEM_2022/res/labs/img/lin/20.
+png> <D:/FEM_2022/res/labs/img/lin/40.png>]
 (D:/FEM_2022/res/labs/text/tab/lin_40.txt) [9]
 Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 
@@ -1730,10 +1561,10 @@ Package rerunfilecheck Info: File `educmm_lab_Variant_N_M.out' has not changed.
 (rerunfilecheck)             Checksum: 4892AB935761D04217E567117F2FDD50;4467.
  ) 
 Here is how much of TeX's memory you used:
- 35708 strings out of 474266
- 663450 string characters out of 5751443
- 2047558 words of memory out of 5000000
- 56850 multiletter control sequences out of 15000+600000
+ 35704 strings out of 474266
+ 663374 string characters out of 5751443
+ 2046558 words of memory out of 5000000
+ 56846 multiletter control sequences out of 15000+600000
  598344 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,15n,120p,790b,1464s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1758,7 +1589,7 @@ texmf-dist/fonts/type1/public/cm-super/sfsi1095.pfb><d:/texlive/2023/texmf-dist
 e1/public/cm-super/sfsx1095.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/
 cm-super/sfti1095.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/s
 fti1200.pfb>
-Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (21 pages, 1162423
+Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (21 pages, 1172610
  bytes).
 PDF statistics:
  694 PDF objects out of 1000 (max. 8388607)

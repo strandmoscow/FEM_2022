@@ -195,7 +195,7 @@ double calc_abs_error(const std::vector<double>& y_real, const std::vector<doubl
 int main() {
     
     // нахождение количества линейных КЭ
-    int N=1,n=0;
+    int N=19000,n=0;
     double err=10;
     std::vector<double> y_r(N + 1);
     std::vector<double> y(N + 1);
