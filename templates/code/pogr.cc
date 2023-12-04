@@ -194,11 +194,11 @@ double calc_abs_error(const std::vector<double>& y_real, const std::vector<doubl
 
 int main() {
     
-    //нахождение количества линейных КЭ
-//    int N=4000,n=0;
-//    double err=10;
-//    std::vector<double> y_r(N + 1);
-//    std::vector<double> y(N + 1);
+    // нахождение количества линейных КЭ
+    int N=19000,n=0;
+    double err=10;
+    std::vector<double> y_r(N + 1);
+    std::vector<double> y(N + 1);
     FILE* pogr;
     pogr = fopen("res/labs/text/pogr.txt", "w");
 //    while (err>CUB && n<=5000){
@@ -219,7 +219,8 @@ int main() {
 //        n+=1;
 //    }
 
-    fprintf(pogr, "%d", 45034);
+    fprintf(pogr, "%d", 555);
+
 
     fclose(pogr);
   

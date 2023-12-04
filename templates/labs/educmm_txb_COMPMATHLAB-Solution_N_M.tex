@@ -10,10 +10,10 @@
 =0,
 \end{align}
 при следующих граничных условиях (г. у.): 
-\begin{align}\label{2_rod}
+\begin{align}\label{1_gu}
     u{% if min_cond_type == 0 %}{% endif %}{% if min_cond_type == 1 %}'{% endif %}(x={{ min_int_int }}) = {{ min_value_int }},
 \end{align}
-\begin{align}\label{1_rod}
+\begin{align}\label{2_gu}
     u{% if max_cond_type == 0 %}{% endif %}{% if max_cond_type == 1 %}'{% endif %}(x={{ max_int_int }}) = {{ max_value_int }}.
 \end{align}
 
@@ -146,7 +146,7 @@ $$
 	u_j
 \end{bmatrix}
 =
-{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}
+{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} {{ b_abs }} {% endif %}
 \begin{bmatrix}
 -\frac{1}{2}, & \frac{1}{2} \\
 -\frac{1}{2}, & \frac{1}{2}
@@ -325,13 +325,12 @@ $$
 \end{bmatrix}
 \end{align}
 
-Локальные матрицу жесткости и вектор нагрузок из уравнения \ref{cub} с помощью матричных преобразований приведем к следующему виду:
-
+Локальные матрица жесткости и вектор нагрузок могут быть представлены в виде:
 $$ \begin{bmatrix}
-a_{11}     &  0  & 0  &  a_{14}\\
-a_{21}     &  a_{22}  & 0  &  a_{24}\\
-a_{31}     &  0  &  a_{33} &  a_{34}\\
-a_{41}     &  0  & 0  &  a_{44}
+a_{11}     &  a_{12}  &  a_{13} &  a_{14}\\
+a_{21}     &  a_{22}  &  a_{23} &  a_{24}\\
+a_{31}     &  a_{32}  &  a_{33} &  a_{34}\\
+a_{41}     &  a_{42}  & a_{43}  &  a_{44}
 \end{bmatrix}
 \begin{bmatrix}
 u_i \\
@@ -340,26 +339,95 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1 {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{du}{dx}|_i \\
+b_1 - 2 \frac{du}{dx}|_i \\
 b_2\\
 b_3\\
-b_4 {% if a_int < 0 %} -{{ a_abs }} {% endif %} {% if a_int > 0 %} +{{ a_abs }} {% endif %} \frac{du}{dx}|_l
+b_4 + 2 \frac{du}{dx}|_l
 \end{bmatrix}$$
 
-Для упрощения расчетов преобразуем систему выше, исключив внутренние узлы. Таким образом СЛАУ (математическая модель кубического КЭ):
+Выполним матричные преобразования.
+$$ \begin{bmatrix}
+a_{11} -\frac{a_{12}}{a_{22}}{a_{21}}    &  a_{12} -\frac{a_{12}}{a_{22}}{a_{22}}  &  a_{13} -\frac{a_{12}}{a_{22}}{a_{23}} &  a_{14}-\frac{a_{12}}{a_{22}}{a_{24}}\\
+a_{21}     &  a_{22}  &  a_{23} &  a_{24}\\
+a_{31} -\frac{a_{32}}{a_{22}}{a_{21}}   &  a_{32}-\frac{a_{32}}{a_{22}}{a_{22}}  &  a_{33}-\frac{a_{32}}{a_{22}}{a_{23}} &  a_{34}-\frac{a_{32}}{a_{22}}{a_{24}}\\
+a_{41}  -\frac{a_{42}}{a_{22}}{a_{21}}   &  a_{42} -\frac{a_{42}}{a_{22}}{a_{22}}  & a_{43}-\frac{a_{42}}{a_{22}}{a_{23}}  &  a_{44}-\frac{a_{42}}{a_{22}}{a_{24}}
+\end{bmatrix}
+\begin{bmatrix}
+u_i \\
+u_j \\
+u_k\\
+u_l
+\end{bmatrix} =
+\begin{bmatrix}
+b_1-\frac{a_{12}}{a_{22}}{b_{2}} {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{du}{dx}|_i \\
+b_2\\
+b_3 - \frac{a_{32}}{a_{22}}{b_{2}}\\
+b_4 - \frac{a_{42}}{a_{22}}{b_{2}} {% if a_int < 0 %} -{{ a_abs }} {% endif %} {% if a_int > 0 %} +{{ a_abs }} {% endif %} \frac{du}{dx}|_l
+\end{bmatrix}$$
+
+% ---------------------------второе
 
 $$ \begin{bmatrix}
-a_{11}     &   a_{14}\\
-a_{41}     &    a_{44}
+a_{11}'-\frac{a_{13}'}{a_{33}'}a_{31}'   &  0 -\frac{a_{13}'}{a_{33}'}0  &  a_{13}'--\frac{a_{13}'}{a_{33}'}a_{33}' &  a_{14}'-\frac{a_{13}'}{a_{33}'}a_{34}'\\
+a_{21}' -\frac{a_{23}'}{a_{33}'}a_{31}'    &  a_{22}' -\frac{a_{23}'}{a_{33}'}0  &  a_{23}' -\frac{a_{23}'}{a_{33}'}a_{33}' &  a_{24}' -\frac{a_{23}'}{a_{33}'}a_{34}'\\
+a_{31}'     &  0  &  a_{33}' &  a_{34}'\\
+a_{41}'  -\frac{a_{43}'}{a_{33}'}a_{31}'    &  0-\frac{a_{43}'}{a_{33}'}0  & a_{43}'-\frac{a_{43}'}{a_{33}'}a_{33}'  &  a_{44}'-\frac{a_{43}'}{a_{33}'}a_{34}'
+\end{bmatrix}
+\begin{bmatrix}
+u_i \\
+u_j \\
+u_k\\
+u_l
+\end{bmatrix} =
+\begin{bmatrix}
+b_1'-\frac{a_{13}'}{a_{33}'}b_{3}' {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{du}{dx}|_i \\
+b_2'-\frac{a_{23}'}{a_{33}'}b_{3}'\\
+b_3'\\
+b_4' -\frac{a_{43}'}{a_{33}'}b_{3}' {% if a_int < 0 %} -{{ a_abs }} {% endif %} {% if a_int > 0 %} +{{ a_abs }} {% endif %} \frac{du}{dx}|_l
+\end{bmatrix}$$
+
+Итого получаем:
+
+$$ \begin{bmatrix}
+a_{11}''     &  0  & 0  &  a_{14}''\\
+a_{21}''     &  a_{22}''  & 0  &  a_{24}''\\
+a_{31}''     &  0  &  a_{33}'' &  a_{34}''\\
+a_{41}''    &  0  & 0  &  a_{44}''
+\end{bmatrix}
+\begin{bmatrix}
+u_i \\
+u_j \\
+u_k\\
+u_l
+\end{bmatrix} =
+\begin{bmatrix}
+b_1'' ^{} {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{du}{dx}|_i \\
+b_2''\\
+b_3''\\
+b_4'' {% if a_int < 0 %} -{{ a_abs }} {% endif %} {% if a_int > 0 %} +{{ a_abs }} {% endif %} \frac{du}{dx}|_l
+\end{bmatrix}$$
+
+Для упрощения расчетов преобразуем систему выше, исключив внутренние узлы.
+
+
+Таким образом, при использовании кубической функции-формы,  получаем:
+$$ \begin{bmatrix}
+a_{11}''     &   a_{14}''\\
+a_{41}''     &    a_{44}''
 \end{bmatrix}
 \begin{bmatrix}
 u_i \\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1 {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{du}{dx}|_i \\
-b_4 {% if a_int < 0 %} -{{ a_abs }} {% endif %} {% if a_int > 0 %} +{{ a_abs }} {% endif %} \frac{du}{dx}|_l
+b_{1}'' ^{} {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{du}{dx}|_i \\
+b_4'' {% if a_int < 0 %} -{{ a_abs }} {% endif %} {% if a_int > 0 %} +{{ a_abs }} {% endif %} \frac{du}{dx}|_l
 \end{bmatrix}$$
+
+~\\
+~\\
+% %~\\
+
 
 %-------------------------------------------------
 \subsection{Получение глобальных матрицы жесткости и вектора нагрузок}
@@ -417,17 +485,17 @@ $$
 
 \subsubsection{Учет граничных условий}
 
-Применим граничные условия первого (см. \ref{1_rod}) и второго рода (см. \ref{2_rod}) к выведенной выше системе.
+Применим граничные условия {% if min_cond_type == 0 %}первого{% endif %}{% if min_cond_type == 1 %} второго {% endif %} (см. \ref{1_gu}) и {% if max_cond_type == 0 %}первого{% endif %}{% if max_cond_type == 1 %} второго {% endif %} рода (см. \ref{2_gu}) к выведенной выше системе.
 
 $$
 \begin{bmatrix}
-1     &   0        &   0 & \cdots & 0 & 0 & 0  & 0\\
-a_{21}^1     &    a_{22}^1+a_{11}^2 & a_{12}^2  & 0 & \cdots & 0 & 0  & 0\\
-0     &    a_{21}^2 & a_{22}^2+a_{11}^3  &  a_{12}^3  & 0 & \cdots & 0  & 0\\
-0     &    0  & a_{21}^3  & a_{22}^3+ \cdots  &  & &   & 0\\
+{% if min_cond_type == 0 %}1 & 0{% endif %}{% if min_cond_type == 1 %}a_{11}^1     &   a_{12}^1{% endif %} &   0 & \cdots & 0 & 0 & 0  & 0\\
+a_{21}^1 & a_{22}^1+a_{11}^2 & a_{12}^2  & 0 & \cdots & 0 & 0  & 0\\
+0 & a_{21}^2 & a_{22}^2+a_{11}^3  &  a_{12}^3  & 0 & \cdots & 0  & 0\\
+0 & 0 & a_{21}^3  & a_{22}^3+ \cdots  &  & &   & 0\\
 \vdots & \vdots & \vdots & \vdots &  &  &   & \vdots\\
 0 & 0 & 0 & 0 &  0 & 0 & \cdots+a_{11}^n  & a_{12}^n\\
-0 & 0 & 0 & 0 &  0 & 0 & 0 & 1
+0 & 0 & 0 & 0 &  0 & 0 & {% if max_cond_type == 0 %}0 & 1{% endif %}{% if max_cond_type == 1 %}a_{21}^n  & a_{22}^n{% endif %}
 \end{bmatrix}
 \begin{bmatrix}
 u_0 \\
@@ -560,8 +628,8 @@ X & Аналитическое & МКЭ-    & Абсолютная \\
 Так как очевидно, что при увлечении числа КЭ точность растет, найдем искомое следуя алгоритму, представленному на рисунке \ref{alg}.
 
 \begin{figure}[H]
-\centerline{\includegraphics[scale = 0.65]{labs/img/img2.pdf}}
-\caption{Алгоритм нахождения количества КЭ, заданную точность}
+\centerline{\includegraphics[scale = 0.65]{labs/img/img2.jpg}}
+\caption{Алгоритм нахождения количества КЭ, заданную точность ($cub_{20} = \input{labs/text/pgr/cub_20.txt}$)}
 \label{alg}
 \end{figure}
 
@@ -571,7 +639,7 @@ X & Аналитическое & МКЭ-    & Абсолютная \\
 
 \begin{lstlisting}[language=c++, label=prog,caption={\textit{Реализация МКЭ}}]
 
-	{{ code }}
+{{ code }}
 
 \end{lstlisting}
 %-------------------------------------------------

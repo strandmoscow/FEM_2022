@@ -6,12 +6,12 @@
 \contentsline {subsection}{\numberline {4}Получение локальных матрицы жесткости и вектора нагрузок}{4}{subsection.0.4}%
 \contentsline {subsubsection}{Линейная функция-формы КЭ}{4}{section*.4}%
 \contentsline {subsubsection}{Кубическая функция-формы КЭ}{5}{section*.5}%
-\contentsline {subsection}{\numberline {5}Получение глобальных матрицы жесткости и вектора нагрузок}{7}{subsection.0.5}%
-\contentsline {subsubsection}{Ансамблирование}{7}{section*.6}%
+\contentsline {subsection}{\numberline {5}Получение глобальных матрицы жесткости и вектора нагрузок}{8}{subsection.0.5}%
+\contentsline {subsubsection}{Ансамблирование}{8}{section*.6}%
 \contentsline {subsubsection}{Учет граничных условий}{8}{section*.7}%
 \contentsline {subsection}{\numberline {6}Анализ результатов}{8}{subsection.0.6}%
-\contentsline {subsubsection}{Линейная функция-формы}{8}{section*.8}%
-\contentsline {subsubsection}{Кубическая функция-формы}{11}{section*.12}%
-\contentsline {subsubsection}{Нахождение количества линейных КЭ, обеспечивающих ту же точность, что и 20 кубических}{14}{section*.16}%
-\contentsline {subsection}{\numberline {7}Код}{14}{subsection.0.7}%
+\contentsline {subsubsection}{Линейная функция-формы}{9}{section*.8}%
+\contentsline {subsubsection}{Кубическая функция-формы}{12}{section*.12}%
+\contentsline {subsubsection}{Нахождение количества линейных КЭ, обеспечивающих ту же точность, что и 20 кубических}{15}{section*.16}%
+\contentsline {subsection}{\numberline {7}Код}{15}{subsection.0.7}%
 \contentsline {subsection}{\numberline {8}Вывод}{21}{subsection.0.8}%
