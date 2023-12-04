@@ -68,11 +68,11 @@ $$
 
 В соответствии с методом Галеркина для уравнения \ref{usl}:
 \begin{equation}\label{lin}
-\int_0^L \mathbf{W_e}\left( {{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{d\mathbf{u}}{dx}{% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x=0,
+\int_0^L \mathbf{W_e}\left( {{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }} \frac{d\mathbf{u}}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }}\frac{d\mathbf{u}}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \mathbf{u} {% endif %} {% if c_int > 0 %} +{{ c_abs }}\mathbf{u} {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x=0,
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left({{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{du}{dx}{% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x= {{ a_int }}\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\int_0^L \mathbf{W_e} d x=0$$
+$$\int_0^L \mathbf{W_e}\left({{ a_int }}\frac{d^2\mathbf{u}}{dx^2}{% if b_int < 0 %} -{{ b_abs }} \frac{du}{dx} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{du}{dx} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \mathbf{u} {% endif %} {% if c_int > 0 %} +{{ c_abs }}\mathbf{u} {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\right) d x= {{ a_int }}\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx {% if b_int < 0 %} -{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if b_int > 0 %} +{{ b_abs }} \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x {% endif %} {% if c_int < 0 %} -{{ c_abs }} \int_0^L \mathbf{W_e} \mathbf{u} d x {% endif %} {% if c_int > 0 %} +{{ c_abs }} \int_0^L \mathbf{W_e} \mathbf{u} d x {% endif %} {% if d_int < 0 %} -{{ d_abs }} {% endif %} {% if d_int > 0 %} +{{ d_abs }} {% endif %}\int_0^L \mathbf{W_e} d x=0$$
 
 Распишем каждое слагаемое отдельно:
 $$
@@ -119,6 +119,7 @@ u_j
 \end{bmatrix}
 $$
 
+{% if b_int != 0 %}
 $$
 {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx={% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\int_0^L
 	\begin{bmatrix}
@@ -156,6 +157,32 @@ u_i \\
 u_j
 \end{bmatrix}
 $$
+{% endif %}
+
+{% if c_int != 0%}
+$$ {% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} {{ c_abs }} {% endif %}
+\int_0^L \mathbf{W_e} \mathbf{u} d x=
+{% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} {{ c_abs }} {% endif %}
+\int_0^L \begin{bmatrix}
+(1-\frac{x}{L}) \\
+\frac{x}{L}
+\end{bmatrix} \begin{bmatrix}
+(1-\frac{x}{L}) ; & \frac{x}{L}
+\end{bmatrix}\begin{bmatrix}
+u_i \\
+u_j
+\end{bmatrix} d x=
+{% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} {{ c_abs }} {% endif %}
+\begin{bmatrix}
+\frac{L}{3}, & \frac{L}{6} \\
+\frac{L}{6}, & \frac{L}{3}
+\end{bmatrix}
+\begin{bmatrix}
+u_i \\
+u_j
+\end{bmatrix}
+$$
+{% endif %}
 
 $${{ d_int }}\int_0^L \mathbf{W_e} d x= {{ d_int }}
 \begin{bmatrix}
@@ -168,8 +195,8 @@ $$
 
 $$
 \begin{bmatrix}
-	{{ a_int }}\frac{1}{L} {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %} \frac{1}{2}, & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{1}{L} {% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %} \frac{1}{2} \\
-	{% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{1}{L}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %} \frac{1}{2}, &  {{ a_int }}\frac{1}{L} {% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %} \frac{1}{2}
+	{{ a_int }}\frac{1}{L} {% if b_int < 0 %} -{{ b_abs }} \frac{1}{2} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{1}{2} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{L}{3} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{L}{3} {% endif %}, & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{1}{L} {% if b_int < 0 %} +{{ b_abs }} \frac{1}{2} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{1}{2} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{L}{3} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{L}{3} {% endif %} \\
+	{% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{1}{L}{% if b_int < 0 %} -{{ b_abs }} \frac{1}{2} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{1}{2} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{L}{3} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{L}{3} {% endif %}, &  {{ a_int }}\frac{1}{L} {% if b_int < 0 %} +{{ b_abs }} \frac{1}{2} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{1}{2} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{L}{3} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{L}{3} {% endif %}
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
@@ -257,6 +284,7 @@ u_l
 \end{bmatrix}
 $$
 
+{% if b_int != 0%}
 $$
 {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %} \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx
 =
@@ -288,6 +316,32 @@ $$
 	u_l
 \end{bmatrix}
 $$
+{% endif %}
+
+{% if c_int != 0 %}
+$$ {% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} {{ c_abs }} {% endif %}
+\int_0^L \mathbf{W_e} \mathbf{u} d x=
+{% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} {{ c_abs }} {% endif %}
+\int_0^L \begin{bmatrix}
+-\frac{9x^3}{2L^3}+\frac{18x^2}{2L^2}-\frac{11x}{2L} + 1\\
+\frac{27x^3}{2L^3}-\frac{45x^2}{2L^2}+\frac{9x}{L}\\
+-\frac{27x^3}{2L^3}+\frac{36x^2}{2L^2}-\frac{9x}{2L}\\
+\frac{9x^3}{2L^3}-\frac{9x^2}{2L^2}-\frac{x}{L};
+\end{bmatrix} \mathbf{u} d x=
+{% if c_int < 0 %} -{{ c_abs }} {% endif %} {% if c_int > 0 %} {{ c_abs }} {% endif %}
+\begin{bmatrix}
+\frac{8L}{105} & \frac{33L}{560} & -\frac{3L}{140} & \frac{19L}{1680}\\
+\frac{33L}{560} & \frac{27L}{70} & -\frac{27L}{560} & -\frac{3L}{140} \\
+-\frac{3L}{140} & -\frac{27L}{560} & \frac{27L}{70} & \frac{33L}{560} \\
+\frac{19L}{1680} & -\frac{3L}{140} & \frac{33L}{560} & \frac{8L}{105}
+\end{bmatrix}
+\begin{bmatrix}
+u_i \\
+u_j \\
+u_k\\
+u_l
+\end{bmatrix}$$
+{% endif %}
 
 $$
 {{ d_int }} \int_0^L \mathbf{W_e} d x
@@ -305,10 +359,11 @@ $$
 Таким образом, для уравнения \ref{lin}, при использовании кубической функции-формы,  получаем:
 
 \begin{align}\label{cub}
-\begin{bmatrix}{{ a_int }}\frac{37}{10L}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{1}{2} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{189}{40L}{% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %}\frac{57}{80} & {{ a_int }}\frac{27}{20L}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{3}{10} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{13}{40L} {% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %} \frac{7}{80}\\
-	{% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{189}{40L} {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{57}{80} & {{ a_int }}\frac{54}{5L}+0 & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{297}{40L}{% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %}\frac{81}{80} & {{ a_int }}\frac{27}{20L} {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{3}{10} \\
-	{{ a_int }}\frac{27}{20L} {% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %} \frac{3}{10} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{297}{40L}{% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{81}{80} & {{ a_int }}\frac{54}{5L}+0 & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{189}{40L} {% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %}\frac{57}{80} \\
-	{% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{13}{40L} {% if b_int < 0 %} -{{ b_abs }} {% endif %} {% if b_int > 0 %} +{{ b_abs }} {% endif %}\frac{7}{80} & {{ a_int }}\frac{27}{20L}{% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %}\frac{3}{10} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %}\frac{189}{40L}{% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %}\frac{57}{80} & {{ a_int }}\frac{37}{10L} {% if b_int < 0 %} +{{ b_abs }} {% endif %} {% if b_int > 0 %} -{{ b_abs }} {% endif %}\frac{1}{2}
+\begin{bmatrix}
+    {{ a_int }} \frac{37}{10L} {% if b_int < 0 %} -{{ b_abs }} \frac{1}{2} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{1}{2} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{8L}{105} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{8L}{105} {% endif %} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{189}{40L}{% if b_int < 0 %} +{{ b_abs }} \frac{57}{80} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{57}{80} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{33L}{560} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{33L}{560} {% endif %} & {{ a_int }} \frac{27}{20L}{% if b_int < 0 %} -{{ b_abs }} \frac{3}{10} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{3}{10} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \frac{3L}{140} {% endif %} {% if c_int > 0 %} +{{ c_abs }} \frac{3L}{140} {% endif %} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{13}{40L} {% if b_int < 0 %} +{{ b_abs }} \frac{7}{80} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{7}{80} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{19L}{1680} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{19L}{1680} {% endif %} \\
+	{% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{189}{40L} {% if b_int < 0 %} -{{ b_abs }} \frac{57}{80} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{57}{80} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{33L}{560} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{33L}{560} {% endif %} & {{ a_int }} \frac{54}{5L} {% if c_int < 0 %} +{{ c_abs }} \frac{27L}{70} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{27L}{70} {% endif %}& {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{297}{40L}{% if b_int < 0 %} +{{ b_abs }} \frac{81}{80} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{81}{80} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \frac{27L}{560} {% endif %} {% if c_int > 0 %} +{{ c_abs }} \frac{27L}{560} {% endif %} & {{ a_int }} \frac{27}{20L} {% if b_int < 0 %} -{{ b_abs }} \frac{3}{10} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{3}{10} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \frac{3L}{140} {% endif %} {% if c_int > 0 %} +{{ c_abs }} \frac{3L}{140} {% endif %} \\
+	{{ a_int }} \frac{27}{20L} {% if b_int < 0 %} +{{ b_abs }} \frac{3}{10} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{3}{10} {% endif %}  {% if c_int < 0 %} -{{ c_abs }} \frac{3L}{140} {% endif %} {% if c_int > 0 %} +{{ c_abs }} \frac{3L}{140} {% endif %} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{297}{40L}{% if b_int < 0 %} -{{ b_abs }} \frac{81}{80} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{81}{80} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \frac{27L}{560} {% endif %} {% if c_int > 0 %} +{{ c_abs }} \frac{27L}{560} {% endif %} & {{ a_int }} \frac{54}{5L} {% if c_int < 0 %} +{{ c_abs }} \frac{27L}{70} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{27L}{70} {% endif %} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{189}{40L} {% if b_int < 0 %} +{{ b_abs }} \frac{57}{80} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{57}{80} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{33L}{560} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{33L}{560} {% endif %} \\
+	{% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{13}{40L} {% if b_int < 0 %} -{{ b_abs }} \frac{7}{80} {% endif %} {% if b_int > 0 %} +{{ b_abs }} \frac{7}{80} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{19L}{1680} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{19L}{1680} {% endif %} & {{ a_int }} \frac{27}{20L}{% if b_int < 0 %} +{{ b_abs }} \frac{3}{10} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{3}{10} {% endif %} {% if c_int < 0 %} -{{ c_abs }} \frac{3L}{140} {% endif %} {% if c_int > 0 %} +{{ c_abs }} \frac{3L}{140} {% endif %} & {% if a_int < 0 %} +{{ a_abs }} {% endif %} {% if a_int > 0 %} -{{ a_abs }} {% endif %} \frac{189}{40L}{% if b_int < 0 %} +{{ b_abs }} \frac{57}{80} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{57}{80} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{33L}{560} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{33L}{560} {% endif %} & {{ a_int }} \frac{37}{10L} {% if b_int < 0 %} +{{ b_abs }} \frac{1}{2} {% endif %} {% if b_int > 0 %} -{{ b_abs }} \frac{1}{2} {% endif %} {% if c_int < 0 %} +{{ c_abs }} \frac{8L}{105} {% endif %} {% if c_int > 0 %} -{{ c_abs }} \frac{L}8{105} {% endif %}
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\

@@ -6,14 +6,14 @@
 //#define TABLE
 //#define CUBE
 
-constexpr double EPS = 1e-16,CUB= 0.0001195516;
+constexpr double EPS = 1e-16,CUB= 0.003742709;
 double EPS = 1e-16;
-double X_BEGIN = 0.0;
-double X_END = 7.0;
+double X_BEGIN = 1.0;
+double X_END = 32.0;
 size_t ELEMS_NUM = ;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-constexpr double a = 7.0, B = 6.0, C = 0.0, D = -5.0, usl_left = 10.0, usl_right = -5.0; // au"+Bu'+Cu+D=0
+constexpr double a = 4.0, B = 0.0, C = -11.0, D = 7.0, usl_left = -10.0, usl_right = 5.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -45,7 +45,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    double rez = 5. / 36. * (6. * x + 49. * exp(6. - (6. * x) / 7.) - 49. * exp(6.) + 72.);
+    double rez = (exp(-1. / 2. * sqrt(11.) * (x + 1.)) * (-117. * exp(sqrt(11.) * x) + 7. * exp(1. / 2. * sqrt(11.) * (x + 1.)) + 7. * exp(1. / 2. * sqrt(11.) * (x + 63.)) + 10. * sqrt(11.) * exp(1. / 2. * sqrt(11.) * (2. * x + 31.)) - 10. * sqrt(11.) * exp((33. * sqrt(11.))/2.) - 117. * exp(32. * sqrt(11.))))/(11. * (1. + exp(31. * sqrt(11.))));
     return rez;
 }
 

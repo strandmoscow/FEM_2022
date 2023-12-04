@@ -6,15 +6,15 @@
 
 Решить с помощью МКЭ уравнение \ref{usl}
 \begin{align}\label{usl}
-7\frac{d^2u}{dx^2}   +6 \frac{du}{dx}    u  -5 
+4\frac{d^2u}{dx^2}    -11   u  + 7 
 =0,
 \end{align}
 при следующих граничных условиях (г. у.): 
 \begin{align}\label{1_gu}
-    u(x=0) = 10,
+    u(x=1) = -10,
 \end{align}
 \begin{align}\label{2_gu}
-    u'(x=7) = -5.
+    u'(x=32) = 5.
 \end{align}
 
 Количество конечных элементов
@@ -44,7 +44,7 @@
 
 Таким образом, получаем:
 $$
-u(x)=\frac{5}{36}\left(6 x+49 e^{6-(6 x) / 7}-49 e^6+72\right).
+u(x)=\begin{align} & \frac{1}{11\left(1+e^{31 \sqrt{11}}\right)} e^{-1 / 2 \sqrt{11}(x+1)} \cdot \\ & \cdot \left(-117 e^{\sqrt{11} x}+7 e^{1 / 2 \sqrt{11}(x+1)}+7 e^{1 / 2 \sqrt{11}(x+63)}+\right. \\ & \left. + 10 \sqrt{11} e^{1 / 2 \sqrt{11}(2 x+31)}-10 \sqrt{11} e^{(33 \sqrt{11}) / 2}-117 e^{32 \sqrt{11}}\right) \end{align}.
 $$
 
 
@@ -68,21 +68,21 @@ $$
 
 В соответствии с методом Галеркина для уравнения \ref{usl}:
 \begin{equation}\label{lin}
-\int_0^L \mathbf{W_e}\left( 7\frac{d^2\mathbf{u}}{dx^2}  +6 \frac{d\mathbf{u}}{dx} -5  \right) d x=0,
+\int_0^L \mathbf{W_e}\left( 4\frac{d^2\mathbf{u}}{dx^2}   -11 \mathbf{u}     +7 \right) d x=0,
 \end{equation}
 где $\mathbf{W_e=N_e}^T$.
 
-$$\int_0^L \mathbf{W_e}\left(7\frac{d^2\mathbf{u}}{dx^2}  +6 \frac{du}{dx} -5  \right) d x= 7\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx   +6  \int_0^L \mathbf{W_e}\frac{d\mathbf{u}}{dx} d x  -5  \int_0^L \mathbf{W_e} d x=0$$
+$$\int_0^L \mathbf{W_e}\left(4\frac{d^2\mathbf{u}}{dx^2}   -11 \mathbf{u}     +7 \right) d x= 4\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx    -11 \int_0^L \mathbf{W_e} \mathbf{u} d x     +7 \int_0^L \mathbf{W_e} d x=0$$
 
 Распишем каждое слагаемое отдельно:
 $$
-7\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=7\int_0^L
+4\int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx=4\int_0^L
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
 	\end{bmatrix}
 \frac{d^2 \mathbf{u}}{dx^2} dx =
-7
+4
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
 	\frac{x}{L}
@@ -90,7 +90,7 @@ $$
 \frac{d\mathbf{u}}{dx} |_0^L -
 $$
 $$
-  -7  \int_0^L
+  -4  \int_0^L
 \frac{d}{dx}
 	\begin{bmatrix}
 	(1-\frac{x}{L}) \\
@@ -106,9 +106,9 @@ $$
 	\end{bmatrix}
 =
 	\begin{bmatrix}
-	  -7 \frac{d\mathbf{u}}{dx}|_i \\
-7\frac{d\mathbf{u}}{dx}|_j
-	\end{bmatrix}   -7 
+	  -4 \frac{d\mathbf{u}}{dx}|_i \\
+4\frac{d\mathbf{u}}{dx}|_j
+	\end{bmatrix}   -4 
 \begin{bmatrix}
 \frac{1}{L}, & -\frac{1}{L} \\
 -\frac{1}{L}, & \frac{1}{L}
@@ -119,37 +119,25 @@ u_j
 \end{bmatrix}
 $$
 
-$$
-  +6 \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx=  +6 \int_0^L
-	\begin{bmatrix}
-	(1-\frac{x}{L}) \\
-	\frac{x}{L}
-	\end{bmatrix}
-\frac{d \mathbf{u}}{dx}
-	\begin{bmatrix}
-	u_i \\
-	u_j
-	\end{bmatrix}
-dx
-=
-$$
-$$
-=
-  \frac{6}{L} 
-\int_0^L
+
+
+
+$$  -11  
+\int_0^L \mathbf{W_e} \mathbf{u} d x=
+ -11  
+\int_0^L \begin{bmatrix}
+(1-\frac{x}{L}) \\
+\frac{x}{L}
+\end{bmatrix} \begin{bmatrix}
+(1-\frac{x}{L}) ; & \frac{x}{L}
+\end{bmatrix}\begin{bmatrix}
+u_i \\
+u_j
+\end{bmatrix} d x=
+ -11  
 \begin{bmatrix}
-	(1-\frac{x}{L}) & (-1+\frac{x}{L})\\
-	-\frac{x}{L} & \frac{x}{L}
-\end{bmatrix}
-\begin{bmatrix}
-	u_i \\
-	u_j
-\end{bmatrix}
-=
-  6 
-\begin{bmatrix}
--\frac{1}{2}, & \frac{1}{2} \\
--\frac{1}{2}, & \frac{1}{2}
+\frac{L}{3}, & \frac{L}{6} \\
+\frac{L}{6}, & \frac{L}{3}
 \end{bmatrix}
 \begin{bmatrix}
 u_i \\
@@ -157,7 +145,8 @@ u_j
 \end{bmatrix}
 $$
 
-$$-5\int_0^L \mathbf{W_e} d x= -5
+
+$$7\int_0^L \mathbf{W_e} d x= 7
 \begin{bmatrix}
 	\frac{L}{2} \\
 	\frac{L}{2}
@@ -168,16 +157,16 @@ $$
 
 $$
 \begin{bmatrix}
-	7\frac{1}{L}   +6  \frac{1}{2}, &   -7 \frac{1}{L}   -6  \frac{1}{2} \\
-	  -7  \frac{1}{L}  +6  \frac{1}{2}, &  7\frac{1}{L}   -6  \frac{1}{2}
+	4\frac{1}{L}    +11 \frac{L}{3}  , &   -4 \frac{1}{L}    +11 \frac{L}{3}   \\
+	  -4  \frac{1}{L}   +11 \frac{L}{3}  , &  4\frac{1}{L}    +11 \frac{L}{3}  
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
 	u_j
 \end{bmatrix}=
 \begin{bmatrix}
-	  -7 \frac{du}{dx}|_i  -5   \frac{L}{2}\\
-	7\frac{du}{dx}|_j  -5   \frac{L}{2}
+	  -4 \frac{du}{dx}|_i   +7  \frac{L}{2}\\
+	4\frac{du}{dx}|_j   +7  \frac{L}{2}
 \end{bmatrix}
 $$
 
@@ -201,9 +190,9 @@ $$
 
 Как и для линейной функции-формы применим метод Галеркина (см. уравнение \ref{lin}) и рассмотрим каждое слагаемое отдельно.
 
-$$7 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
+$$4 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 =
-7\int_0^L
+4\int_0^L
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -215,7 +204,7 @@ $$7 \int_0^L \mathbf{W_e} \frac{d^2 \mathbf{u}}{dx^2} dx
 $$
 $$
 =
-7
+4
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -223,7 +212,7 @@ $$
 	\frac{9x^3}{2L^3}&-&\frac{9x^2}{2L^2}&-&\frac{x}{L}&&
 \end{bmatrix}
 \frac{d\mathbf{u}}{dx} |_0^L
-  -7  \int_0^L \frac{d}{dx}
+  -4  \int_0^L \frac{d}{dx}
 \begin{bmatrix}
 	-\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
 	\frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
@@ -235,12 +224,12 @@ $$
 $$
 =
 \begin{bmatrix}
-	  -7 \frac{d\mathbf{u}}{dx}|_i \\
+	  -4 \frac{d\mathbf{u}}{dx}|_i \\
 	0\\
 	0\\
-7\frac{d\mathbf{u}}{dx}|_l
+4\frac{d\mathbf{u}}{dx}|_l
 \end{bmatrix}
-  -7 
+  -4 
 \begin{bmatrix}
 \begin{array}{rrrr}
 	\frac{37}{10L} & -\frac{189}{40} & \frac{27}{20L} & -\frac{13}{40L}\\
@@ -257,42 +246,37 @@ u_l
 \end{bmatrix}
 $$
 
-$$
-  +6  \int_0^L \mathbf{W_e} \frac{d \mathbf{u}}{dx} dx
-=
-  +6 \int_0^L
+
+
+
+$$  -11  
+\int_0^L \mathbf{W_e} \mathbf{u} d x=
+ -11  
+\int_0^L \begin{bmatrix}
+-\frac{9x^3}{2L^3}+\frac{18x^2}{2L^2}-\frac{11x}{2L} + 1\\
+\frac{27x^3}{2L^3}-\frac{45x^2}{2L^2}+\frac{9x}{L}\\
+-\frac{27x^3}{2L^3}+\frac{36x^2}{2L^2}-\frac{9x}{2L}\\
+\frac{9x^3}{2L^3}-\frac{9x^2}{2L^2}-\frac{x}{L};
+\end{bmatrix} \mathbf{u} d x=
+ -11  
 \begin{bmatrix}
-  -\frac{9x^3}{2L^3}&+&\frac{18x^2}{2L^2}&-&\frac{11x}{2L} &+& 1\\
-  \frac{27x^3}{2L^3}&-&\frac{45x^2}{2L^2}&+&\frac{9x}{L}&&\\
-  -\frac{27x^3}{2L^3}&+&\frac{36x^2}{2L^2}&-&\frac{9x}{2L}&&\\
-  \frac{9x^3}{2L^3}&-&\frac{9x^2}{2L^2}&-&\frac{x}{L}&&
-\end{bmatrix}
-\frac{d \mathbf{u}}{dx} dx
-=
-$$
-$$
-=
-  +6 
-\begin{bmatrix}
-\begin{array}{rrrr}
-	-\frac{1}{2} & \frac{57}{80} & -\frac{3}{10} & \frac{7}{80}\\
-	-\frac{57}{80} & 0 & \frac{81}{80} & -\frac{3}{10} \\
-	\frac{3}{10} & -\frac{81}{80} & 0 & -\frac{3}{10}\\
-	-\frac{7}{80} & \frac{3}{10} & -\frac{57}{80} & \frac{1}{2}
-\end{array}
+\frac{8L}{105} & \frac{33L}{560} & -\frac{3L}{140} & \frac{19L}{1680}\\
+\frac{33L}{560} & \frac{27L}{70} & -\frac{27L}{560} & -\frac{3L}{140} \\
+-\frac{3L}{140} & -\frac{27L}{560} & \frac{27L}{70} & \frac{33L}{560} \\
+\frac{19L}{1680} & -\frac{3L}{140} & \frac{33L}{560} & \frac{8L}{105}
 \end{bmatrix}
 \begin{bmatrix}
-	u_i \\
-	u_j \\
-	u_k\\
-	u_l
-\end{bmatrix}
-$$
+u_i \\
+u_j \\
+u_k\\
+u_l
+\end{bmatrix}$$
+
 
 $$
--5 \int_0^L \mathbf{W_e} d x
+7 \int_0^L \mathbf{W_e} d x
 =
--5
+7
 \begin{bmatrix}
 	\frac{L}{8} \\
 	\frac{3L}{8}\\
@@ -305,10 +289,11 @@ $$
 Таким образом, для уравнения \ref{lin}, при использовании кубической функции-формы,  получаем:
 
 \begin{align}\label{cub}
-\begin{bmatrix}7\frac{37}{10L}  +6 \frac{1}{2} &   -7 \frac{189}{40L}  -6 \frac{57}{80} & 7\frac{27}{20L}  +6 \frac{3}{10} &   -7 \frac{13}{40L}   -6  \frac{7}{80}\\
-	  -7 \frac{189}{40L}   +6 \frac{57}{80} & 7\frac{54}{5L}+0 &   -7 \frac{297}{40L}  -6 \frac{81}{80} & 7\frac{27}{20L}   +6 \frac{3}{10} \\
-	7\frac{27}{20L}   -6  \frac{3}{10} &   -7 \frac{297}{40L}  +6 \frac{81}{80} & 7\frac{54}{5L}+0 &   -7 \frac{189}{40L}   -6 \frac{57}{80} \\
-	  -7 \frac{13}{40L}   +6 \frac{7}{80} & 7\frac{27}{20L}  -6 \frac{3}{10} &   -7 \frac{189}{40L}  -6 \frac{57}{80} & 7\frac{37}{10L}   -6 \frac{1}{2}
+\begin{bmatrix}
+    4 \frac{37}{10L}    +11 \frac{8L}{105}   &   -4  \frac{189}{40L}   +11 \frac{33L}{560}   & 4 \frac{27}{20L}   -11 \frac{3L}{140}   &   -4  \frac{13}{40L}    +11 \frac{19L}{1680}   \\
+	  -4  \frac{189}{40L}    +11 \frac{33L}{560}   & 4 \frac{54}{5L}  +11 \frac{27L}{70}  &   -4  \frac{297}{40L}   -11 \frac{27L}{560}   & 4 \frac{27}{20L}    -11 \frac{3L}{140}   \\
+	4 \frac{27}{20L}     -11 \frac{3L}{140}   &   -4  \frac{297}{40L}   -11 \frac{27L}{560}   & 4 \frac{54}{5L}  +11 \frac{27L}{70}   &   -4  \frac{189}{40L}    +11 \frac{33L}{560}   \\
+	  -4  \frac{13}{40L}    +11 \frac{19L}{1680}   & 4 \frac{27}{20L}   -11 \frac{3L}{140}   &   -4  \frac{189}{40L}   +11 \frac{33L}{560}   & 4 \frac{37}{10L}    +11 \frac{8L}{105}  
 \end{bmatrix}
 \begin{bmatrix}
 	u_i \\
@@ -318,10 +303,10 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-    -5\frac{L}{8}   -7  \frac{du}{dx}|_i \\
-	-5\frac{3L}{8}\\
-	-5\frac{3L}{8}\\
-	-5\frac{L}{8}   +7  \frac{du}{dx}|_l
+    7\frac{L}{8}   -4  \frac{du}{dx}|_i \\
+	7\frac{3L}{8}\\
+	7\frac{3L}{8}\\
+	7\frac{L}{8}   +4  \frac{du}{dx}|_l
 \end{bmatrix}
 \end{align}
 
@@ -359,10 +344,10 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1-\frac{a_{12}}{a_{22}}{b_{2}}   -7  \frac{du}{dx}|_i \\
+b_1-\frac{a_{12}}{a_{22}}{b_{2}}   -4  \frac{du}{dx}|_i \\
 b_2\\
 b_3 - \frac{a_{32}}{a_{22}}{b_{2}}\\
-b_4 - \frac{a_{42}}{a_{22}}{b_{2}}   +7  \frac{du}{dx}|_l
+b_4 - \frac{a_{42}}{a_{22}}{b_{2}}   +4  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 % ---------------------------второе
@@ -380,10 +365,10 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1'-\frac{a_{13}'}{a_{33}'}b_{3}'   -7  \frac{du}{dx}|_i \\
+b_1'-\frac{a_{13}'}{a_{33}'}b_{3}'   -4  \frac{du}{dx}|_i \\
 b_2'-\frac{a_{23}'}{a_{33}'}b_{3}'\\
 b_3'\\
-b_4' -\frac{a_{43}'}{a_{33}'}b_{3}'   +7  \frac{du}{dx}|_l
+b_4' -\frac{a_{43}'}{a_{33}'}b_{3}'   +4  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 Итого получаем:
@@ -401,10 +386,10 @@ u_k\\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_1'' ^{}   -7  \frac{du}{dx}|_i \\
+b_1'' ^{}   -4  \frac{du}{dx}|_i \\
 b_2''\\
 b_3''\\
-b_4''   +7  \frac{du}{dx}|_l
+b_4''   +4  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 Для упрощения расчетов преобразуем систему выше, исключив внутренние узлы.
@@ -420,8 +405,8 @@ u_i \\
 u_l
 \end{bmatrix} =
 \begin{bmatrix}
-b_{1}'' ^{}   -7  \frac{du}{dx}|_i \\
-b_4''   +7  \frac{du}{dx}|_l
+b_{1}'' ^{}   -4  \frac{du}{dx}|_i \\
+b_4''   +4  \frac{du}{dx}|_l
 \end{bmatrix}$$
 
 ~\\
@@ -448,8 +433,8 @@ u_i \\
 u_j
 \end{bmatrix} =
 \begin{bmatrix}
-b_1   -7  \frac{du}{dx}|_i \\
-b_2   +7  \frac{du}{dx}|_l
+b_1   -4  \frac{du}{dx}|_i \\
+b_2   +4  \frac{du}{dx}|_l
 \end{bmatrix},$$
 
 тогда, при разбитие области на $n$ КЭ, глобальная матрица жесткости  будет иметь размерность $(n+1)\cdot(n+1)$:
@@ -473,13 +458,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
-b_1^1   -7  \frac{du}{dx}|_0 \\
+b_1^1   -4  \frac{du}{dx}|_0 \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
-b_2^n   +7  \frac{du}{dx}|_L
+b_2^n   +4  \frac{du}{dx}|_L
 \end{bmatrix}
 $$
 
@@ -507,13 +492,13 @@ u_{n-1}\\
 u_n
 \end{bmatrix} =
 \begin{bmatrix}
- 10   \\
+ -10   \\
 b_2^1+b_1^2\\
 b_2^2+b_1^3\\
 b_2^3+b_1^4\\
 \vdots\\
 b_2^{n-1}+b_1^n\\
- b_2^n   +7  \cdot -5   \\
+ b_2^n   +4  \cdot 5   \\
 \end{bmatrix}
 $$
 
@@ -647,14 +632,14 @@ X & Аналитическое & МКЭ-    & Абсолютная \\
 //#define TABLE
 //#define CUBE
 
-constexpr double EPS = 1e-16,CUB= 0.0001195516;
+constexpr double EPS = 1e-16,CUB= 0.003742709;
 double EPS = 1e-16;
-double X_BEGIN = 0.0;
-double X_END = 7.0;
+double X_BEGIN = 1.0;
+double X_END = 32.0;
 size_t ELEMS_NUM = ;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-constexpr double a = 7.0, B = 6.0, C = 0.0, D = -5.0, usl_left = 10.0, usl_right = -5.0; // au"+Bu'+Cu+D=0
+constexpr double a = 4.0, B = 0.0, C = -11.0, D = 7.0, usl_left = -10.0, usl_right = 5.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -686,7 +671,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    double rez = 5. / 36. * (6. * x + 49. * exp(6. - (6. * x) / 7.) - 49. * exp(6.) + 72.);
+    double rez = (exp(-1. / 2. * sqrt(11.) * (x + 1.)) * (-117. * exp(sqrt(11.) * x) + 7. * exp(1. / 2. * sqrt(11.) * (x + 1.)) + 7. * exp(1. / 2. * sqrt(11.) * (x + 63.)) + 10. * sqrt(11.) * exp(1. / 2. * sqrt(11.) * (2. * x + 31.)) - 10. * sqrt(11.) * exp((33. * sqrt(11.))/2.) - 117. * exp(32. * sqrt(11.))))/(11. * (1. + exp(31. * sqrt(11.))));
     return rez;
 }
 
@@ -904,11 +889,11 @@ int main() {
 \labattributes{}{}{}{}{студент группы \EduGroup, \Author}{\Year, \Semestr}
 %--------------
 
+%   +4 
+%   -4 
+
+%  
+%  
+
 %   +7 
 %   -7 
-
-%   +6 
-%   -6 
-
-%  -5  
-%  +5  
