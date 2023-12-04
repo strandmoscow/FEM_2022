@@ -219,7 +219,8 @@ int main() {
 //        n+=1;
 //    }
 
-    fprintf(pogr, "%d", 19354);
+    fprintf(pogr, "%d", 555);
+
 
     fclose(pogr);
   

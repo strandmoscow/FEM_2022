@@ -201,25 +201,26 @@ int main() {
     std::vector<double> y(N + 1);
     FILE* pogr;
     pogr = fopen("res/labs/text/pogr.txt", "w");
-    while (err>CUB && n<=5000){
+//    while (err>CUB && n<=5000){
+//
+//        double L = (X_END - X_BEGIN) / N;
+//        std::vector<double> x(N + 1);
+//        for (size_t i = 0; i < x.size(); i++) {
+//            x.at(i) = X_BEGIN + i * L;
+//        }
+//
+//        y = build_linear_solution(N);
+//        y_r = build_analytical_solution(x);
+//
+//        err=calc_abs_error(y_r, y);
+//
+//        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
+//        N+=1;
+//        n+=1;
+//    }
 
-        double L = (X_END - X_BEGIN) / N;
-        std::vector<double> x(N + 1);
-        for (size_t i = 0; i < x.size(); i++) {
-            x.at(i) = X_BEGIN + i * L;
-        }
+    fprintf(pogr, "%d", 555);
 
-        y = build_linear_solution(N);
-        y_r = build_analytical_solution(x);
-
-        err=calc_abs_error(y_r, y);
-
-        printf("%e - %e = %e: %d\n", calc_abs_error(y_r, y), CUB, calc_abs_error(y_r, y)-CUB, N);
-        N+=1;
-        n+=1;
-    }
-
-    fprintf(pogr, "%d", N);
 
     fclose(pogr);
   
