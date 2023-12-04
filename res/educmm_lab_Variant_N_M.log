@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  4 DEC 2023 21:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  4 DEC 2023 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1576,22 +1576,43 @@ LaTeX Font Info:    Trying to load font information for T2A+cmss on input line
 (d:/texlive/2023/texmf-dist/tex/latex/cyrillic/t2acmss.fd
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-646.
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:646: You can't use
+ `macro parameter character #' in horizontal mode.
+l.646 //#
+         define OSN
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:647: You can't use
+ `macro parameter character #' in horizontal mode.
+l.647 //#
+         define TABLE
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:648: You can't use
+ `macro parameter character #' in horizontal mode.
+l.648 //#
+         define CUBE
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
+650.
 (d:/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [15 <D:/FEM_2022/res/labs/img/img2.jpg>] [16] [17] [18]
-Overfull \hbox (2.3865pt too wide) in paragraph at lines 786--787
-[][][][][][][][][] 
- []
-
-[19] [20] [21]
-Overfull \hbox (0.80959pt too wide) in paragraph at lines 913--913
+) [15 <D:/FEM_2022/res/labs/img/img2.jpg>] [16] [17] [18] [19] [20]
+Overfull \hbox (0.80959pt too wide) in paragraph at lines 904--904
  []
  []
 
-) [22] (D:/FEM_2022/res/educmm_lab_Variant_N_M.aux
+[21]) [22] (D:/FEM_2022/res/educmm_lab_Variant_N_M.aux
 * soulpos - computing points - it may take a few seconds *
 \openout4 = `educmm_lab_Variant_N_M.upb'.
 
@@ -1610,10 +1631,10 @@ Package rerunfilecheck Info: File `educmm_lab_Variant_N_M.out' has not changed.
 (rerunfilecheck)             Checksum: 4892AB935761D04217E567117F2FDD50;4467.
  ) 
 Here is how much of TeX's memory you used:
- 35729 strings out of 474266
- 663890 string characters out of 5751443
- 2047558 words of memory out of 5000000
- 56860 multiletter control sequences out of 15000+600000
+ 35740 strings out of 474266
+ 663936 string characters out of 5751443
+ 2038558 words of memory out of 5000000
+ 56880 multiletter control sequences out of 15000+600000
  602490 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,15n,120p,790b,1464s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1641,11 +1662,11 @@ er/sfsi1095.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss109
 5.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><d:/
 texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/texlive/20
 23/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (22 pages, 1226152
+Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (22 pages, 1232857
  bytes).
 PDF statistics:
- 710 PDF objects out of 1000 (max. 8388607)
- 624 compressed objects within 7 object streams
- 319 named destinations out of 1000 (max. 500000)
+ 699 PDF objects out of 1000 (max. 8388607)
+ 613 compressed objects within 7 object streams
+ 310 named destinations out of 1000 (max. 500000)
  192 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -244,9 +244,9 @@ int main() {
      }
 
      for (size_t i = 0; i < x.size()-1; i++) {
-        fprintf(tab, "%lf & %lf & %lf & %lf \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
+        fprintf(tab, "%lf & %lf & %lf & %e \\\\\n", x.at(i), y_real.at(i), y.at(i), std::fabs(y_real.at(i) - y.at(i)));
      }
-     fprintf(tab, "%lf & %lf & %lf & %lf", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
+     fprintf(tab, "%lf & %lf & %lf & %e", x.at(x.size()-1), y_real.at(x.size()-1), y.at(x.size()-1), std::fabs(y_real.at(x.size()-1) - y.at(x.size()-1)));
 
      for (size_t i = 0; i < x_size; i++) {
          fprintf(gp, "%lf %lf\n", x.at(i), y.at(i));
