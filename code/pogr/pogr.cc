@@ -2,13 +2,13 @@
 #include <vector>
 #include <cmath>
 
-double EPS = 1e-16, CUB=0.003742709;
-double X_BEGIN = 1.0;
-double X_END = 32.0;
+double EPS = 1e-16, CUB=6.668266e-11;
+double X_BEGIN = 3.0;
+double X_END = 10.0;
 size_t ELEMS_NUM = 20;
 double L = (X_END - X_BEGIN) / ELEMS_NUM;
 
-double a = 4.0, B = 0.0, C = -11.0, D = 7.0, usl_left = -10.0, usl_right = 5.0; // au"+Bu'+Cu+D=0
+double a = 7.0, B = 0.0, C = -1.0, D = 12.0, usl_left = 0.0, usl_right = 20.0; // au"+Bu'+Cu+D=0
 
 std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::vector<double>& b){
     size_t row_size = A.size();
@@ -43,7 +43,7 @@ std::vector<double> solve_with_gauss(std::vector<std::vector<double>>& A, std::v
 }
 
 double analytical_solution(double x) {
-    return (exp(-1. / 2. * sqrt(11.) * (x + 1.)) * (-117. * exp(sqrt(11.) * x) + 7. * exp(1. / 2. * sqrt(11.) * (x + 1.)) + 7. * exp(1. / 2. * sqrt(11.) * (x + 63.)) + 10. * sqrt(11.) * exp(1. / 2. * sqrt(11.) * (2. * x + 31.)) - 10. * sqrt(11.) * exp((33. * sqrt(11.))/2.) - 117. * exp(32. * sqrt(11.))))/(11. * (1. + exp(31. * sqrt(11.))));
+    return (4. * exp(-(x + 3.) / sqrt(7.)) * (3. * exp((2. * x)/sqrt(7.)) - 3. * exp((x + 3.)/sqrt(7.)) + 3. * exp((x + 17.)/sqrt(7.)) + 2. * exp((2. * x + 7.)/sqrt(7.)) - 2. * exp(13. /sqrt(7.)) - 3. * exp(20./sqrt(7.))))/(exp(2. * sqrt(7.)) - 1.);
 }
 
 std::vector<double> build_analytical_solution(std::vector<double>& x_vec) {
@@ -89,7 +89,7 @@ std::vector<double> build_linear_solution(size_t elems_num) {
         A.at(0).at(1) = 0;
     }
 
-    if ( 1 == 1 ) {
+    if ( 0 == 1 ) {
         b.at(size - 1) =  D * L /2. + a*usl_right;
     } else {
         b.at(size - 1) = usl_right;
@@ -168,7 +168,7 @@ std::vector<double> build_cube_solution(size_t elems_num) {
         A.at(0).at(1) = 0.;
     }
 
-    if (1 == 1 ) {
+    if (0 == 1 ) {
         b.at(size - 1) =  local_b_mod.at(1) + a * usl_right;
     } else {
         b.at(size - 1) = usl_right;

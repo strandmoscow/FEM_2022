@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  5 DEC 2023 02:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.26)  5 DEC 2023 12:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1454,14 +1454,14 @@ toc)
 /fonts/enc/dvips/mnsymbol/MnSymbolD.enc}{d:/texlive/2023/texmf-dist/fonts/enc/d
 vips/mnsymbol/MnSymbolE.enc}{d:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}]
-<labs/img/img1.png, id=132, 794.97pt x 562.1pt>
+<labs/img/img1.png, id=131, 792.9625pt x 539.01375pt>
 File: labs/img/img1.png Graphic file (type png)
 <use labs/img/img1.png>
 Package pdftex.def Info: labs/img/img1.png  used on input line 39.
-(pdftex.def)             Requested size: 397.48402pt x 281.04932pt.
+(pdftex.def)             Requested size: 396.48027pt x 269.50621pt.
 
 
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:47: Package amsmat
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:48: Package amsmat
 h Error: Erroneous nesting of equation structures;
 (amsmath)                trying to recover with `aligned'.
 
@@ -1469,32 +1469,68 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.47 ...2}-117 e^{32 \sqrt{11}}\right) \end{align}
+l.48 ...7}}-3 e^{20 / \sqrt{7}}\right) \end{align}
                                                   .
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:48: Extra }, or fo
+rgotten \right.
+<template> }
+            $\hfil \endtemplate 
+l.48 ...7}}-3 e^{20 / \sqrt{7}}\right) \end{align}
+                                                  .
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:48: Missing \right
+. inserted.
+<inserted text> 
+                \right .
+l.48 ...7}}-3 e^{20 / \sqrt{7}}\right) \end{align}
+                                                  .
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:48: Missing } inse
+rted.
+<inserted text> 
+                }
+l.48 ...7}}-3 e^{20 / \sqrt{7}}\right) \end{align}
+                                                  .
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 [4 <D:/FEM_2022/res/labs/img/img1.png>] [5{d:/texlive/2023/texmf-dist/fonts/enc
 /dvips/mnsymbol/MnSymbolF.enc}] [6]
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:389: Double supers
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:390: Double supers
 cript.
-l.389 b_1'' ^
-             {}   -4  \frac{du}{dx}|_i \\
+l.390 b_1'' ^
+             {}   -7  \frac{du}{dx}|_i \\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:408: Double supers
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:409: Double supers
 cript.
-l.408 b_{1}'' ^
-               {}   -4  \frac{du}{dx}|_i \\
+l.409 b_{1}'' ^
+               {}   -7  \frac{du}{dx}|_i \\
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--415
+Underfull \hbox (badness 10000) in paragraph at lines 413--416
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--415
+Underfull \hbox (badness 10000) in paragraph at lines 413--416
 
  []
 
@@ -1502,12 +1538,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 412--415
 <labs/img/lin/20.png, id=172, 462.528pt x 346.896pt>
 File: labs/img/lin/20.png Graphic file (type png)
 <use labs/img/lin/20.png>
-Package pdftex.def Info: labs/img/lin/20.png  used on input line 518.
+Package pdftex.def Info: labs/img/lin/20.png  used on input line 519.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
 <labs/img/lin/40.png, id=173, 462.528pt x 346.896pt>
 File: labs/img/lin/40.png Graphic file (type png)
 <use labs/img/lin/40.png>
-Package pdftex.def Info: labs/img/lin/40.png  used on input line 524.
+Package pdftex.def Info: labs/img/lin/40.png  used on input line 525.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
  [8] (D:/FEM_2022/res/labs/text/tab/lin_20.txt) [9 <D:/FEM_2022/res/labs/img/li
 n/20.png> <D:/FEM_2022/res/labs/img/lin/40.png>]
@@ -1520,12 +1556,12 @@ Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 <labs/img/cub/20.png, id=198, 462.528pt x 346.896pt>
 File: labs/img/cub/20.png Graphic file (type png)
 <use labs/img/cub/20.png>
-Package pdftex.def Info: labs/img/cub/20.png  used on input line 568.
+Package pdftex.def Info: labs/img/cub/20.png  used on input line 569.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
 <labs/img/cub/40.png, id=199, 462.528pt x 346.896pt>
 File: labs/img/cub/40.png Graphic file (type png)
 <use labs/img/cub/40.png>
-Package pdftex.def Info: labs/img/cub/40.png  used on input line 574.
+Package pdftex.def Info: labs/img/cub/40.png  used on input line 575.
 (pdftex.def)             Requested size: 231.88995pt x 173.91866pt.
 
 (D:/FEM_2022/res/labs/text/tab/cub_20.txt) [12 <D:/FEM_2022/res/labs/img/cub/20
@@ -1539,14 +1575,14 @@ Overfull \vbox (22.3387pt too high) has occurred while \output is active []
 <labs/img/img2.jpg, id=219, 186.19562pt x 325.215pt>
 File: labs/img/img2.jpg Graphic file (type jpg)
 <use labs/img/img2.jpg>
-Package pdftex.def Info: labs/img/img2.jpg  used on input line 616.
+Package pdftex.def Info: labs/img/img2.jpg  used on input line 617.
 (pdftex.def)             Requested size: 121.02571pt x 211.38724pt.
 
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:617: Argument of \
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:618: Argument of \
 caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.617 ...20} = \input{labs/text/pgr/cub_20.txt}$)}
+l.618 ...20} = \input{labs/text/pgr/cub_20.txt}$)}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -1557,11 +1593,11 @@ your `}' was spurious, just type `2' and it will go away.
 
 Runaway argument?
 {\@caption \@captype }{\@iinput }\def \reserved@b {\@@input }\futurelet \ETC.
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:617: Paragraph end
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:618: Paragraph end
 ed before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.617 ...20} = \input{labs/text/pgr/cub_20.txt}$)}
+l.618 ...20} = \input{labs/text/pgr/cub_20.txt}$)}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
@@ -1579,26 +1615,17 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 625.
+nput line 626.
 LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 
-625.
+626.
 
 (d:/texlive/2023/texmf-dist/tex/latex/cyrillic/t2acmss.fd
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:631: You can't use
- `macro parameter character #' in horizontal mode.
-l.631 //#
-         define OSN
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
 D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:632: You can't use
  `macro parameter character #' in horizontal mode.
 l.632 //#
-         define TABLE
+         define OSN
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -1607,6 +1634,15 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:633: You can't use
  `macro parameter character #' in horizontal mode.
 l.633 //#
+         define TABLE
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+D:/FEM_2022/res/labs/educmm_txb_COMPMATHLAB-Solution_N_M.tex:634: You can't use
+ `macro parameter character #' in horizontal mode.
+l.634 //#
          define CUBE
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -1614,15 +1650,15 @@ If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-635.
+636.
 (d:/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [15 <D:/FEM_2022/res/labs/img/img2.jpg>] [16] [17] [18] [19] [20]
-Overfull \hbox (0.80959pt too wide) in paragraph at lines 889--889
+) [15 <D:/FEM_2022/res/labs/img/img2.jpg>] [16] [17] [18] [19] [20] [21]
+Overfull \hbox (0.80959pt too wide) in paragraph at lines 894--894
  []
  []
 
-[21]) [22] (D:/FEM_2022/res/educmm_lab_Variant_N_M.aux
+) [22] (D:/FEM_2022/res/educmm_lab_Variant_N_M.aux
 * soulpos - computing points - it may take a few seconds *
 \openout4 = `educmm_lab_Variant_N_M.upb'.
 
@@ -1641,9 +1677,9 @@ Package rerunfilecheck Info: File `educmm_lab_Variant_N_M.out' has not changed.
 (rerunfilecheck)             Checksum: 4892AB935761D04217E567117F2FDD50;4467.
  ) 
 Here is how much of TeX's memory you used:
- 35744 strings out of 474266
- 664012 string characters out of 5751443
- 2058558 words of memory out of 5000000
+ 35748 strings out of 474266
+ 664072 string characters out of 5751443
+ 2045558 words of memory out of 5000000
  56884 multiletter control sequences out of 15000+600000
  602490 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1672,11 +1708,11 @@ er/sfsi1095.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss109
 5.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><d:/
 texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/texlive/20
 23/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (22 pages, 1223022
+Output written on D:/FEM_2022/res/educmm_lab_Variant_N_M.pdf (22 pages, 1220852
  bytes).
 PDF statistics:
- 699 PDF objects out of 1000 (max. 8388607)
- 613 compressed objects within 7 object streams
- 310 named destinations out of 1000 (max. 500000)
+ 704 PDF objects out of 1000 (max. 8388607)
+ 618 compressed objects within 7 object streams
+ 314 named destinations out of 1000 (max. 500000)
  192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
